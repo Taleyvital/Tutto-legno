@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .token-group { }
+  .group-name { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B8B2AA; margin-bottom: 12px; }
+  .token-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .swatch-radius { background: #A67C52; }
+  .swatch-shadow { background: white; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #7A7470; letter-spacing: 0.08em; }
+  .token-label { font-size: 10px; font-weight: 600; color: #3E3A36; }
+  .token-value { font-size: 9px; font-family: 'Courier New', monospace; color: #B8B2AA; margin-top: 1px; }
+</style>
+</head>
+<body>
+<div class="section-label">Espacement, Rayons & Ombres</div>
+<div class="grid">
+
+  <div class="token-group">
+    <div class="group-name">Border Radius</div>
+    <div class="token-row">
+      <div class="swatch-radius" style="width:40px;height:40px;border-radius:0px;"></div>
+      <div><div class="token-label">None — 0px</div><div class="token-value">--radius-none</div></div>
+    </div>
+    <div class="token-row">
+      <div class="swatch-radius" style="width:40px;height:40px;border-radius:2px;"></div>
+      <div><div class="token-label">SM — 2px</div><div class="token-value">--radius-sm (boutons)</div></div>
+    </div>
+    <div class="token-row">
+      <div class="swatch-radius" style="width:40px;height:16px;border-radius:9999px;"></div>
+      <div><div class="token-label">Full — pill</div><div class="token-value">--radius-full (badges)</div></div>
+    </div>
+  </div>
+
+  <div class="token-group">
+    <div class="group-name">Shadows</div>
+    <div class="token-row">
+      <div class="swatch-shadow" style="width:48px;height:36px;box-shadow:0 1px 4px rgba(74,46,20,0.06);">sm</div>
+      <div><div class="token-label">Shadow SM</div><div class="token-value">0 1px 4px rgba(brown,6%)</div></div>
+    </div>
+    <div class="token-row">
+      <div class="swatch-shadow" style="width:48px;height:36px;box-shadow:0 4px 16px rgba(74,46,20,0.10);">md</div>
+      <div><div class="token-label">Shadow MD</div><div class="token-value">0 4px 16px rgba(brown,10%)</div></div>
+    </div>
+    <div class="token-row">
+      <div class="swatch-shadow" style="width:48px;height:36px;box-shadow:0 8px 40px rgba(74,46,20,0.14);">lg</div>
+      <div><div class="token-label">Shadow LG</div><div class="token-value">0 8px 40px rgba(brown,14%)</div></div>
+    </div>
+  </div>
+
+  <div class="token-group">
+    <div class="group-name">Transitions</div>
+    <div class="token-row">
+      <div style="width:12px;height:12px;background:#C9A882;border-radius:50%;"></div>
+      <div><div class="token-label">Fast — 200ms</div><div class="token-value">ease-out</div></div>
+    </div>
+    <div class="token-row">
+      <div style="width:16px;height:16px;background:#A67C52;border-radius:50%;"></div>
+      <div><div class="token-label">Base — 400ms</div><div class="token-value">ease-out</div></div>
+    </div>
+    <div class="token-row">
+      <div style="width:20px;height:20px;background:#7A5230;border-radius:50%;"></div>
+      <div><div class="token-label">Slow — 600ms</div><div class="token-value">ease-out</div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

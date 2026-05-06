@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 20px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .col-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .dot-green { width: 8px; height: 8px; border-radius: 50%; background: #6B8C5A; flex-shrink: 0; }
+  .dot-red { width: 8px; height: 8px; border-radius: 50%; background: #8C4A4A; flex-shrink: 0; }
+
+  .rule {
+    padding: 12px 14px; margin-bottom: 8px; border-radius: 2px;
+    font-size: 11px; line-height: 1.55; font-weight: 400;
+  }
+  .rule-do { background: rgba(107,140,90,0.08); border-left: 3px solid #6B8C5A; color: #2C3A28; }
+  .rule-dont { background: rgba(140,74,74,0.08); border-left: 3px solid #8C4A4A; color: #3A2828; }
+  .rule strong { font-weight: 700; display: block; margin-bottom: 3px; font-size: 10.5px; }
+
+  /* Color combos */
+  .combos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .combo { width: 60px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; }
+  .combo-label { font-size: 6px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .combo-check { font-size: 10px; }
+  .combo-bad { position: relative; }
+  .combo-bad::after { content: "✕"; position: absolute; top: 2px; right: 4px; font-size: 9px; color: #8C4A4A; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="section-label">Règles d'Utilisation</div>
+<div class="grid">
+
+  <!-- DO column -->
+  <div>
+    <div class="col-title" style="color:#6B8C5A;"><div class="dot-green"></div>À FAIRE</div>
+
+    <div class="rule rule-do">
+      <strong>Combiner brun + blanc cassé</strong>
+      Fond linen (#F5EFE6) avec texte brun foncé. C'est la combinaison signature.
+    </div>
+
+    <div class="rule rule-do">
+      <strong>Texte noir profond sur fond clair</strong>
+      Toujours utiliser #1C1916 pour les corps de texte — jamais #000000 pur.
+    </div>
+
+    <div class="rule rule-do">
+      <strong>Grandes photos plein format</strong>
+      Les images de bois doivent être généreuses. Privilégier 16:9 ou plein écran.
+    </div>
+
+    <div class="rule rule-do">
+      <strong>Espacement généreux</strong>
+      Padding minimum 48px sur les sections. Le luxe, c'est de l'espace.
+    </div>
+
+    <div class="rule rule-do">
+      <strong>Titres en Bold 700, sous-titres en Light 300</strong>
+      Le contraste de graisse crée l'élégance typographique.
+    </div>
+
+    <div class="rule rule-do">
+      <strong>Labels en MAJUSCULES espacées</strong>
+      letter-spacing: 0.18–0.22em pour les catégories et les étiquettes.
+    </div>
+
+    <!-- Combos autorisées -->
+    <div style="margin-top:14px;">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#7A7470;margin-bottom:8px;">Combinaisons autorisées</div>
+      <div class="combos">
+        <div class="combo" style="background:#F5EFE6;border:1px solid #E8D8C0;">
+          <div class="combo-label" style="color:#A67C52;">Linen</div>
+          <div class="combo-label" style="color:#1C1916;">+ Noir</div>
+          <div class="combo-check">✓</div>
+        </div>
+        <div class="combo" style="background:#1C1916;">
+          <div class="combo-label" style="color:#C9A882;">Noir</div>
+          <div class="combo-label" style="color:#F5EFE6;">+ Brun c.</div>
+          <div class="combo-check" style="color:#6B8C5A;">✓</div>
+        </div>
+        <div class="combo" style="background:#A67C52;">
+          <div class="combo-label" style="color:#F5EFE6;">Brun</div>
+          <div class="combo-label" style="color:#F5EFE6;">+ Blanc</div>
+          <div class="combo-check" style="color:#F5EFE6;">✓</div>
+        </div>
+        <div class="combo" style="background:#F4F2EF;border:1px solid #E2DED8;">
+          <div class="combo-label" style="color:#7A7470;">Perle</div>
+          <div class="combo-label" style="color:#1C1916;">+ Noir</div>
+          <div class="combo-check">✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DON'T column -->
+  <div>
+    <div class="col-title" style="color:#8C4A4A;"><div class="dot-red"></div>À ÉVITER</div>
+
+    <div class="rule rule-dont">
+      <strong>Jamais de couleurs vives</strong>
+      Rouge, bleu, vert, orange ou toute teinte saturée est interdite. Hors charte.
+    </div>
+
+    <div class="rule rule-dont">
+      <strong>Jamais de dégradés agressifs</strong>
+      Pas de gradient arc-en-ciel ou de background multicolore. Au maximum : dégradé brun→noir.
+    </div>
+
+    <div class="rule rule-dont">
+      <strong>Pas d'emoji dans les communications officielles</strong>
+      Aucune exception. Utiliser des séparateurs typographiques (·, —, ✦) si besoin.
+    </div>
+
+    <div class="rule rule-dont">
+      <strong>Éviter les coins très arrondis</strong>
+      border-radius > 4px sur les cartes et boutons brise l'esthétique architecturale. Max 2px.
+    </div>
+
+    <div class="rule rule-dont">
+      <strong>Pas de fond blanc pur #FFFFFF</strong>
+      Trop clinique. Utiliser #F5EFE6 (linen) ou #F4F2EF (perle) à la place.
+    </div>
+
+    <div class="rule rule-dont">
+      <strong>Ne pas mélanger plus de 3 couleurs</strong>
+      Par composition : brun principal + fond + texte. L'or seulement en accent très discret.
+    </div>
+
+    <!-- Combos interdites -->
+    <div style="margin-top:14px;">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#7A7470;margin-bottom:8px;">Combinaisons interdites</div>
+      <div class="combos">
+        <div class="combo combo-bad" style="background:#0066CC;border:1px solid #E2DED8;">
+          <div class="combo-label" style="color:#fff;">Bleu</div>
+          <div class="combo-label" style="color:#fff;">vif</div>
+        </div>
+        <div class="combo combo-bad" style="background:linear-gradient(135deg,#FF6B35,#FFD700);">
+          <div class="combo-label" style="color:#fff;">Gradient</div>
+          <div class="combo-label" style="color:#fff;">vif</div>
+        </div>
+        <div class="combo combo-bad" style="background:#ffffff;border:1px solid #ccc;">
+          <div class="combo-label" style="color:#999;">Blanc</div>
+          <div class="combo-label" style="color:#999;">pur</div>
+        </div>
+        <div class="combo combo-bad" style="background:#F5EFE6;border:1px solid #E8D8C0;">
+          <div class="combo-label" style="color:#B8B2AA;font-size:5px;">Texte gris</div>
+          <div class="combo-label" style="color:#B8B2AA;font-size:5px;">sur linen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

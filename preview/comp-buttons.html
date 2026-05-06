@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 20px; }
+  .row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .row-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B8B2AA; min-width: 80px; }
+
+  /* Primary Button */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #A67C52; color: #F5EFE6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 14px 28px; border: none; border-radius: 2px; cursor: pointer;
+    transition: background 400ms ease-out;
+  }
+  .btn-primary:hover { background: #7A5230; }
+
+  /* Secondary Button */
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: #1C1916;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 13px 28px; border: 1.5px solid #1C1916; border-radius: 2px; cursor: pointer;
+    transition: all 400ms ease-out;
+  }
+  .btn-secondary:hover { background: #1C1916; color: #F5EFE6; }
+
+  /* Ghost Button */
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: #A67C52;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 13px 28px; border: 1.5px solid #A67C52; border-radius: 2px; cursor: pointer;
+    transition: all 400ms ease-out;
+  }
+  .btn-ghost:hover { background: #A67C52; color: #F5EFE6; }
+
+  /* Dark variant */
+  .btn-dark {
+    display: inline-flex; align-items: center;
+    background: #1C1916; color: #F5EFE6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 14px 28px; border: none; border-radius: 2px; cursor: pointer;
+  }
+
+  /* Disabled */
+  .btn-disabled {
+    display: inline-flex; align-items: center;
+    background: #E2DED8; color: #B8B2AA;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 14px 28px; border: none; border-radius: 2px; cursor: not-allowed;
+  }
+
+  /* Small */
+  .btn-sm {
+    display: inline-flex; align-items: center;
+    background: #A67C52; color: #F5EFE6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 10px 20px; border: none; border-radius: 2px; cursor: pointer;
+  }
+
+  .dark-bg { background: #1C1916; padding: 16px 20px; border-radius: 2px; display: flex; align-items: center; gap: 16px; }
+  .btn-light {
+    display: inline-flex; align-items: center;
+    background: #F5EFE6; color: #1C1916;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 14px 28px; border: none; border-radius: 2px; cursor: pointer;
+  }
+  .btn-outline-light {
+    display: inline-flex; align-items: center;
+    background: transparent; color: #F5EFE6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 13px 28px; border: 1.5px solid rgba(245,239,230,0.5); border-radius: 2px; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="section-label">Boutons</div>
+
+<div class="row">
+  <div class="row-label">Primaire</div>
+  <button class="btn-primary">Demander un devis</button>
+  <button class="btn-primary" style="opacity:0.85;">Hover</button>
+</div>
+
+<div class="row">
+  <div class="row-label">Secondaire</div>
+  <button class="btn-secondary">Voir nos réalisations</button>
+  <button class="btn-dark">En savoir plus</button>
+</div>
+
+<div class="row">
+  <div class="row-label">Ghost</div>
+  <button class="btn-ghost">Contactez-nous</button>
+  <button class="btn-sm">Découvrir</button>
+  <button class="btn-disabled">Indisponible</button>
+</div>
+
+<div class="row">
+  <div class="row-label">Sur fond sombre</div>
+  <div class="dark-bg">
+    <button class="btn-light">Demander un devis</button>
+    <button class="btn-outline-light">Voir nos projets</button>
+  </div>
+</div>
+</body>
+</html>

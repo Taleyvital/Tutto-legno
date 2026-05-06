@@ -1,0 +1,33 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-montserrat), 'Helvetica Neue', sans-serif;
+  background: #F5EFE6;
+  color: #1C1916;
+  overflow-x: hidden;
+}
+
+:root {
+  --brown-50: #F5EFE6;
+  --brown-100: #E8D8C0;
+  --brown-200: #C9A882;
+  --brown-300: #A67C52;
+  --brown-400: #7A5230;
+  --brown-500: #4A2E14;
+  --grey-50: #F4F2EF;
+  --grey-100: #E2DED8;
+  --grey-200: #B8B2AA;
+  --grey-300: #7A7470;
+  --grey-400: #3E3A36;
+  --grey-500: #1C1916;
+  --gold: #B8892A;
+  --gold-light: #D4A853;
+}

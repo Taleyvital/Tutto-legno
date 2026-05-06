@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #3E3A36; font-family: 'Montserrat', sans-serif; padding: 32px; display: flex; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
+
+  /* The post is 1080x1080 — we scale it down to fit */
+  .post-wrapper {
+    flex-shrink: 0;
+  }
+  .post-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #7A7470; margin-bottom: 10px;
+  }
+
+  .ig-post {
+    width: 360px; height: 360px; /* scaled 1/3 from 1080 */
+    position: relative; overflow: hidden;
+    background: #1C1916;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+
+  /* Striped image placeholder */
+  .photo-bg {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      135deg,
+      #2C2420 0px, #2C2420 20px,
+      #1C1916 20px, #1C1916 40px
+    );
+  }
+  .photo-label {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 9px; font-family: 'Courier New', monospace; color: #A67C52;
+    text-align: center; line-height: 1.6;
+    background: rgba(28,25,22,0.75); padding: 10px 16px;
+  }
+
+  /* Gradient overlay */
+  .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,25,22,0.92) 0%, rgba(28,25,22,0.4) 50%, transparent 100%);
+  }
+
+  /* Content */
+  .post-content {
+    position: relative; z-index: 2;
+    padding: 28px;
+  }
+  .post-tag {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #C9A882; margin-bottom: 8px;
+  }
+  .post-title {
+    font-size: 18px; font-weight: 700; line-height: 1.15; color: #F5EFE6;
+    letter-spacing: -0.01em; margin-bottom: 8px;
+  }
+  .post-sub {
+    font-size: 10px; font-weight: 300; letter-spacing: 0.04em; color: #B8B2AA;
+    line-height: 1.5;
+  }
+  .post-logo {
+    position: absolute; top: 22px; left: 28px; z-index: 3;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .post-logo-mark {
+    width: 22px; height: 22px; background: #A67C52;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .post-logo-mark span { font-size: 9px; font-weight: 800; color: #F5EFE6; }
+  .post-logo-name { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F5EFE6; }
+
+  /* Variant 2 — light bg */
+  .ig-post-light {
+    width: 360px; height: 360px;
+    position: relative; overflow: hidden;
+    background: #F5EFE6;
+    display: flex; flex-direction: column;
+  }
+  .post-content-light {
+    padding: 28px; flex: 1; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .accent-bar {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #A67C52;
+  }
+</style>
+</head>
+<body>
+
+<!-- Post 1 — Sombre avec photo -->
+<div class="post-wrapper">
+  <div class="post-label">Post Instagram 1080×1080 — Réalisation sombre</div>
+  <div class="ig-post">
+    <div class="photo-bg"></div>
+    <div class="photo-label">photo réalisation<br>1080 × 1080 px</div>
+    <div class="overlay"></div>
+    <div class="post-logo">
+      <div class="post-logo-mark"><span>TL</span></div>
+      <span class="post-logo-name">Tutto Legno</span>
+    </div>
+    <div class="post-content">
+      <div class="post-tag">Réalisation · Abidjan</div>
+      <div class="post-title">Villa Les Palmiers<br>— Cocody, 2024</div>
+      <div class="post-sub">Menuiserie intérieure complète<br>en chêne massif et wengé.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Post 2 — Clair avec citation -->
+<div class="post-wrapper">
+  <div class="post-label">Post Instagram 1080×1080 — Citation fond clair</div>
+  <div class="ig-post-light">
+    <div style="height:140px;background:repeating-linear-gradient(135deg,#E8D8C0 0,#E8D8C0 12px,#F5EFE6 12px,#F5EFE6 24px); display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:9px;font-family:'Courier New',monospace;color:#A67C52;background:rgba(245,239,230,0.8);padding:8px 14px;">texture bois / grain</span>
+    </div>
+    <div class="post-content-light">
+      <div class="accent-bar"></div>
+      <div style="padding-left:20px;">
+        <div style="font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#A67C52;margin-bottom:10px;">Notre philosophie</div>
+        <div style="font-size:17px;font-weight:700;line-height:1.2;color:#1C1916;letter-spacing:-0.01em;margin-bottom:10px;">"Le bois massif, c'est l'art de créer pour l'éternité."</div>
+        <div style="font-size:9px;font-weight:300;letter-spacing:0.08em;color:#7A7470;">TUTTO LEGNO · ABIDJAN</div>
+      </div>
+    </div>
+    <div style="position:absolute;top:16px;right:22px;display:flex;align-items:center;gap:7px;">
+      <div style="width:20px;height:20px;background:#A67C52;display:flex;align-items:center;justify-content:center;"><span style="font-size:8px;font-weight:800;color:#F5EFE6;">TL</span></div>
+      <span style="font-size:8px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1C1916;">Tutto Legno</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

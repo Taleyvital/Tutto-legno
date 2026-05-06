@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #2C2820; font-family: 'Montserrat', sans-serif; padding: 32px; }
+  .label { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #7A7470; margin-bottom: 10px; }
+
+  /* LinkedIn Banner: 1584×396 — scaled to 660×165 */
+  .li-banner {
+    width: 660px; height: 165px;
+    position: relative; overflow: hidden;
+    background: #1C1916;
+    flex-shrink: 0;
+    margin-bottom: 28px;
+  }
+  .li-photo {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      125deg,
+      #2C2420 0px, #2C2420 14px,
+      #1C1916 14px, #1C1916 28px
+    );
+  }
+  .li-photo-label {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 8px; font-family: 'Courier New', monospace; color: #A67C52;
+    text-align: center; background: rgba(28,25,22,0.8); padding: 8px 14px; line-height: 1.5;
+  }
+  .li-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(28,25,22,0.95) 0%, rgba(28,25,22,0.7) 50%, transparent 100%);
+  }
+  .li-content {
+    position: absolute; left: 36px; top: 0; bottom: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    z-index: 2;
+  }
+  .li-eyebrow { font-size: 7px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #C9A882; margin-bottom: 8px; }
+  .li-title { font-size: 20px; font-weight: 700; line-height: 1.1; color: #F5EFE6; letter-spacing: -0.01em; }
+  .li-sub { font-size: 9px; font-weight: 300; letter-spacing: 0.08em; color: #B8B2AA; margin-top: 8px; }
+  .li-logo {
+    position: absolute; right: 30px; top: 0; bottom: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px; z-index: 2;
+  }
+  .li-logo-mark {
+    width: 36px; height: 36px; background: #A67C52;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .li-logo-mark span { font-size: 14px; font-weight: 800; color: #F5EFE6; }
+  .li-logo-name { font-size: 8px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #F5EFE6; text-align: center; }
+
+  /* Bannière variante claire */
+  .li-banner-light {
+    width: 660px; height: 165px;
+    position: relative; overflow: hidden;
+    background: #F5EFE6;
+    margin-bottom: 28px;
+  }
+
+  /* Profile photos — 400×400 scaled to 80×80 */
+  .profiles { display: flex; gap: 20px; align-items: flex-end; }
+  .profile-group { text-align: center; }
+  .profile-group .label2 { font-size: 8px; color: #7A7470; margin-bottom: 6px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .avatar { width: 80px; height: 80px; position: relative; overflow: hidden; }
+</style>
+</head>
+<body>
+
+<!-- Banner dark -->
+<div class="label">Bannière LinkedIn 1584×396 — Fond sombre avec photo</div>
+<div class="li-banner">
+  <div class="li-photo"></div>
+  <div class="li-photo-label">photo atelier / réalisation<br>1584 × 396 px</div>
+  <div class="li-overlay"></div>
+  <div class="li-content">
+    <div class="li-eyebrow">Menuiserie haut de gamme · Abidjan</div>
+    <div class="li-title">TUTTO LEGNO</div>
+    <div class="li-sub">Bois massif sur mesure — Nous faisons de vos rêves une réalité.</div>
+  </div>
+  <div class="li-logo">
+    <div class="li-logo-mark"><span>TL</span></div>
+    <div class="li-logo-name">Tutto Legno</div>
+  </div>
+</div>
+
+<!-- Banner light -->
+<div class="label">Bannière LinkedIn — Fond clair</div>
+<div class="li-banner-light">
+  <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:#A67C52;"></div>
+  <div style="position:absolute;right:0;top:0;bottom:0;width:180px;background:repeating-linear-gradient(135deg,#E8D8C0 0,#E8D8C0 10px,#F5EFE6 10px,#F5EFE6 20px);"></div>
+  <div style="position:absolute;right:0;top:0;bottom:0;width:180px;background:linear-gradient(to right,#F5EFE6,transparent);"></div>
+  <div style="position:absolute;left:36px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;z-index:2;">
+    <div style="font-size:7px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#A67C52;margin-bottom:8px;">Menuiserie haut de gamme · Abidjan</div>
+    <div style="font-size:22px;font-weight:700;line-height:1.05;color:#1C1916;letter-spacing:-0.02em;">TUTTO LEGNO</div>
+    <div style="font-size:9px;font-weight:300;letter-spacing:0.08em;color:#7A7470;margin-top:8px;">Bois massif sur mesure — Nous faisons de vos rêves une réalité.</div>
+  </div>
+  <div style="position:absolute;right:28px;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;z-index:2;">
+    <div style="width:36px;height:36px;background:#A67C52;display:flex;align-items:center;justify-content:center;"><span style="font-size:14px;font-weight:800;color:#F5EFE6;">TL</span></div>
+    <div style="font-size:7px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1C1916;">Tutto Legno</div>
+  </div>
+</div>
+
+<!-- Profile Photos -->
+<div class="label">Photo de profil 400×400</div>
+<div class="profiles">
+  <!-- Dark BG -->
+  <div class="profile-group">
+    <div class="label2">Fond sombre</div>
+    <div class="avatar" style="background:#1C1916;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+      <div style="width:36px;height:36px;background:#A67C52;display:flex;align-items:center;justify-content:center;"><span style="font-size:14px;font-weight:800;color:#F5EFE6;">TL</span></div>
+      <div style="font-size:6px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C9A882;">TUTTO LEGNO</div>
+    </div>
+  </div>
+  <!-- Light BG -->
+  <div class="profile-group">
+    <div class="label2">Fond clair</div>
+    <div class="avatar" style="background:#F5EFE6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid #E8D8C0;">
+      <div style="width:36px;height:36px;background:#A67C52;display:flex;align-items:center;justify-content:center;"><span style="font-size:14px;font-weight:800;color:#F5EFE6;">TL</span></div>
+      <div style="font-size:6px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1C1916;">TUTTO LEGNO</div>
+    </div>
+  </div>
+  <!-- Brown BG -->
+  <div class="profile-group">
+    <div class="label2">Fond brun</div>
+    <div class="avatar" style="background:#A67C52;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+      <div style="font-size:22px;font-weight:800;color:#F5EFE6;letter-spacing:0.04em;line-height:1;">TL</div>
+      <div style="font-size:5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,239,230,0.7);">TUTTO LEGNO</div>
+    </div>
+  </div>
+  <!-- Circular -->
+  <div class="profile-group">
+    <div class="label2">Circulaire</div>
+    <div class="avatar" style="background:#1C1916;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+      <div style="font-size:20px;font-weight:800;color:#C9A882;letter-spacing:0.02em;line-height:1;">TL</div>
+      <div style="font-size:4.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,130,0.6);">TUTTO LEGNO</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

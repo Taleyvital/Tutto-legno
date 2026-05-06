@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TUTTO LEGNO — UI Kit Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', 'Helvetica Neue', sans-serif; background: #F5EFE6; color: #1C1916; overflow-x: hidden; }
+  :root {
+    --brown-50: #F5EFE6; --brown-100: #E8D8C0; --brown-200: #C9A882;
+    --brown-300: #A67C52; --brown-400: #7A5230; --brown-500: #4A2E14;
+    --grey-50: #F4F2EF; --grey-100: #E2DED8; --grey-200: #B8B2AA;
+    --grey-300: #7A7470; --grey-400: #3E3A36; --grey-500: #1C1916;
+    --gold: #B8892A; --gold-light: #D4A853;
+    --font: 'Montserrat', 'Helvetica Neue', sans-serif;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+/* ─── TL MONOGRAM SVG ─── */
+function TLMonogram({ size = 36, color = "#B8892A" }) {
+  const s = size;
+  const sw  = s * 0.07;
+  const sw2 = s * 0.062;
+  const m   = s * 0.03;
+  const gap = s * 0.14;
+  const ox1 = m, oy1 = m, ox2 = s - m, oy2 = s - m;
+  const ix1 = ox1 + gap, iy1 = oy1 + gap, ix2 = ox2 - gap, iy2 = oy2 - gap;
+  const tBarY  = iy1 + (iy2 - iy1) * 0.18;
+  const tStemX = (ix1 + ix2) / 2;
+  const lX     = ix1 + (ix2 - ix1) * 0.22;
+  return (
+    <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+      <rect x={ox1+sw/2}  y={oy1+sw/2}  width={s-m*2-sw}       height={s-m*2-sw}       stroke={color} strokeWidth={sw}  fill="none"/>
+      <rect x={ix1+sw2/2} y={iy1+sw2/2} width={(ix2-ix1)-sw2}  height={(iy2-iy1)-sw2}  stroke={color} strokeWidth={sw2} fill="none"/>
+      <line x1={ix1+sw2/2}  y1={tBarY}  x2={ix2-sw2/2}  y2={tBarY}  stroke={color} strokeWidth={sw}  strokeLinecap="square"/>
+      <line x1={tStemX}     y1={tBarY}  x2={tStemX}     y2={iy2-sw2/2} stroke={color} strokeWidth={sw}  strokeLinecap="square"/>
+      <line x1={lX}         y1={tBarY+sw*0.3} x2={lX}   y2={iy2-sw2/2} stroke={color} strokeWidth={sw}  strokeLinecap="square"/>
+      <line x1={lX}         y1={iy2-sw2/2}    x2={ix2-sw2/2} y2={iy2-sw2/2} stroke={color} strokeWidth={sw}  strokeLinecap="square"/>
+    </svg>
+  );
+}
+
+/* ─── PLACEHOLDER IMAGE ─── */
+function WoodPhoto({ label = "photo réalisation", aspect = "16/9", dark = false }) {
+  const stripeA = dark ? "#2C2420" : "#E8D8C0";
+  const stripeB = dark ? "#1C1916" : "#F5EFE6";
+  return (
+    <div style={{
+      aspectRatio: aspect, width: "100%",
+      background: `repeating-linear-gradient(135deg, ${stripeA} 0px, ${stripeA} 18px, ${stripeB} 18px, ${stripeB} 36px)`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      position: "relative", overflow: "hidden"
+    }}>
+      <div style={{
+        fontFamily: "'Courier New', monospace", fontSize: 11, color: dark ? "#A67C52" : "#A67C52",
+        background: dark ? "rgba(28,25,22,0.8)" : "rgba(245,239,230,0.85)",
+        padding: "8px 16px", textAlign: "center", lineHeight: 1.6
+      }}>{label}</div>
+    </div>
+  );
+}
+
+/* ─── NAVBAR ─── */
+function Navbar({ scrolled }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const bg = scrolled ? "rgba(28,25,22,0.96)" : "transparent";
+  const border = scrolled ? "1px solid rgba(201,168,130,0.15)" : "1px solid transparent";
+  return (
+    <nav style={{
+      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+      height: 72, display: "flex", alignItems: "center", justifyContent: "space-between",
+      padding: "0 48px", background: bg, borderBottom: border,
+      transition: "background 500ms ease-out, border-color 500ms ease-out",
+      backdropFilter: scrolled ? "blur(16px)" : "none"
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
+        <TLMonogram size={38} color="#B8892A" />
+        <span style={{ fontSize: 14, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase", color: "#F5EFE6", whiteSpace: "nowrap" }}>TUTTO LEGNO</span>
+      </div>
+      <ul style={{ display: "flex", alignItems: "center", gap: 36, listStyle: "none" }}>
+        {["Accueil","Réalisations","Services","À propos","Contact"].map(link => (
+          <li key={link}>
+            <a href="#" style={{
+              fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "#B8B2AA", textDecoration: "none", transition: "color 300ms ease-out"
+            }}
+            onMouseEnter={e => e.target.style.color = "#C9A882"}
+            onMouseLeave={e => e.target.style.color = "#B8B2AA"}
+            >{link}</a>
+          </li>
+        ))}
+      </ul>
+      <button style={{
+        background: "#A67C52", color: "#F5EFE6", border: "none", borderRadius: 2,
+        fontFamily: "var(--font)", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em",
+        textTransform: "uppercase", padding: "12px 24px", cursor: "pointer",
+        transition: "background 400ms ease-out"
+      }}
+      onMouseEnter={e => e.currentTarget.style.background = "#7A5230"}
+      onMouseLeave={e => e.currentTarget.style.background = "#A67C52"}
+      >Demander un devis</button>
+    </nav>
+  );
+}
+
+/* ─── HERO ─── */
+function Hero({ onCTA }) {
+  return (
+    <section style={{ position: "relative", height: "100vh", minHeight: 640, overflow: "hidden", display: "flex", alignItems: "flex-end" }}>
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundImage: "url('hero.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}></div>
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(to top, rgba(28,25,22,0.96) 0%, rgba(28,25,22,0.55) 50%, rgba(28,25,22,0.4) 100%)"
+      }}></div>
+
+      <div style={{ position: "relative", zIndex: 2, padding: "0 80px 96px", maxWidth: 900 }}>
+        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#C9A882", marginBottom: 20 }}>
+          MENUISERIE BOIS MASSIF · ABIDJAN
+        </div>
+        <h1 style={{ fontSize: "clamp(40px, 5.5vw, 88px)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.02em", color: "#F5EFE6", marginBottom: 24, textWrap: "pretty" }}>
+          Nous faisons de vos<br/>rêves une réalité.
+        </h1>
+        <p style={{ fontSize: "clamp(14px, 1.4vw, 18px)", fontWeight: 300, letterSpacing: "0.04em", lineHeight: 1.7, color: "#B8B2AA", marginBottom: 40, maxWidth: 560 }}>
+          Artisans du bois massif depuis vingt ans à Abidjan. Chaque pièce est façonnée sur mesure, pour durer une vie entière.
+        </p>
+        <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+          <button onClick={onCTA} style={{
+            background: "#A67C52", color: "#F5EFE6", border: "none", borderRadius: 2,
+            fontFamily: "var(--font)", fontSize: 11, fontWeight: 700, letterSpacing: "0.16em",
+            textTransform: "uppercase", padding: "16px 36px", cursor: "pointer",
+            transition: "background 400ms ease-out"
+          }}
+          onMouseEnter={e => e.currentTarget.style.background = "#7A5230"}
+          onMouseLeave={e => e.currentTarget.style.background = "#A67C52"}
+          >Demander un devis</button>
+          <button style={{
+            background: "transparent", color: "#F5EFE6", border: "1.5px solid rgba(245,239,230,0.3)",
+            borderRadius: 2, fontFamily: "var(--font)", fontSize: 11, fontWeight: 700,
+            letterSpacing: "0.16em", textTransform: "uppercase", padding: "15px 36px", cursor: "pointer",
+            transition: "all 400ms ease-out"
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = "rgba(245,239,230,0.08)"; e.currentTarget.style.borderColor = "rgba(245,239,230,0.6)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(245,239,230,0.3)"; }}
+          >Découvrir nos réalisations</button>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div style={{ position: "absolute", bottom: 36, right: 48, zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+        <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(245,239,230,0.4)", writingMode: "vertical-rl" }}>DÉFILER</div>
+        <div style={{ width: 1, height: 48, background: "linear-gradient(to bottom, rgba(166,124,82,0.6), transparent)" }}></div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── STATS BAND ─── */
+function StatsBand() {
+  const stats = [
+    { n: "20+", label: "Années d'expérience" },
+    { n: "340+", label: "Projets réalisés" },
+    { n: "100%", label: "Bois massif certifié" },
+    { n: "Abidjan", label: "Atelier & showroom" },
+  ];
+  return (
+    <section style={{ background: "#1C1916", padding: "48px 80px", borderTop: "1px solid rgba(201,168,130,0.12)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
+        {stats.map(s => (
+          <div key={s.n} style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "clamp(28px, 3vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", color: "#C9A882", lineHeight: 1 }}>{s.n}</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase", color: "#7A7470", marginTop: 10 }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ─── SERVICES SECTION ─── */
+function Services() {
+  const services = [
+    { cat: "Portes & Fenêtres", title: "Menuiserie extérieure", desc: "Portes d'entrée monumentales, fenêtres à galandage, baies vitrées habillées de bois massif.", icon: "▭" },
+    { cat: "Mobilier", title: "Aménagement intérieur", desc: "Bibliothèques, dressings, cuisines, salles de bains — entièrement sur mesure.", icon: "▤" },
+    { cat: "Escaliers", title: "Escaliers & garde-corps", desc: "Structures hélicoïdales, droites ou en L. Acajou, wengé, iroko, chêne européen.", icon: "⌇" },
+    { cat: "Parquet", title: "Revêtements de sol", desc: "Parquet massif posé flottant ou cloué, ponçage, huilage, vitrification sur place.", icon: "▦" },
+  ];
+  return (
+    <section style={{ padding: "120px 80px", background: "#F5EFE6" }}>
+      <div style={{ marginBottom: 64 }}>
+        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#A67C52", marginBottom: 16 }}>Nos Expertises</div>
+        <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#1C1916", maxWidth: 600, textWrap: "pretty" }}>
+          Un savoir-faire artisanal<br/>au service du haut de gamme.
+        </h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2 }}>
+        {services.map((s, i) => (
+          <ServiceCard key={i} {...s} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ServiceCard({ cat, title, desc, icon }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: hovered ? "#1C1916" : "#F4F2EF",
+        padding: "40px 32px",
+        transition: "background 400ms ease-out",
+        cursor: "pointer"
+      }}
+    >
+      <div style={{ fontSize: 24, color: hovered ? "#C9A882" : "#C9A882", marginBottom: 20, lineHeight: 1 }}>{icon}</div>
+      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: hovered ? "#7A7470" : "#A67C52", marginBottom: 10 }}>{cat}</div>
+      <div style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.25, color: hovered ? "#F5EFE6" : "#1C1916", marginBottom: 14, transition: "color 400ms ease-out" }}>{title}</div>
+      <div style={{ fontSize: 12, fontWeight: 400, lineHeight: 1.7, color: hovered ? "#B8B2AA" : "#7A7470", transition: "color 400ms ease-out" }}>{desc}</div>
+      <div style={{ marginTop: 24, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: hovered ? "#C9A882" : "#A67C52", transition: "color 400ms ease-out" }}>
+        En savoir plus →
+      </div>
+    </div>
+  );
+}
+
+/* ─── RÉALISATIONS GRID ─── */
+function Realisations() {
+  const [activeFilter, setActiveFilter] = useState("Tous");
+  const filters = ["Tous", "Portes", "Mobilier", "Escaliers", "Parquet"];
+  const projects = [
+    { title: "Villa Les Palmiers", loc: "Cocody, 2024", cat: "Mobilier", size: "large", desc: "Aménagement complet 340 m²" },
+    { title: "Résidence Bel Air", loc: "Angré, 2024", cat: "Portes", size: "small", desc: "12 portes chêne massif" },
+    { title: "Penthouse Plateau", loc: "Plateau, 2023", cat: "Escaliers", size: "small", desc: "Escalier hélicoïdal acajou" },
+    { title: "Villa Tropicale", loc: "Riviera 3, 2023", cat: "Parquet", size: "small", desc: "280 m² parquet iroko" },
+    { title: "Manoir d'Attoban", loc: "Attoban, 2023", cat: "Mobilier", size: "large", desc: "Bibliothèque & dressing wengé" },
+  ];
+  const shown = activeFilter === "Tous" ? projects : projects.filter(p => p.cat === activeFilter);
+  return (
+    <section style={{ padding: "120px 80px", background: "#F4F2EF" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 52, flexWrap: "wrap", gap: 24 }}>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#A67C52", marginBottom: 16 }}>Nos Réalisations</div>
+          <h2 style={{ fontSize: "clamp(24px, 3vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#1C1916" }}>
+            Chaque projet raconte<br/>une histoire unique.
+          </h2>
+        </div>
+        <div style={{ display: "flex", gap: 2 }}>
+          {filters.map(f => (
+            <button key={f} onClick={() => setActiveFilter(f)} style={{
+              fontFamily: "var(--font)", fontSize: 9, fontWeight: 700, letterSpacing: "0.16em",
+              textTransform: "uppercase", padding: "9px 16px", border: "none", cursor: "pointer",
+              background: activeFilter === f ? "#1C1916" : "#E2DED8",
+              color: activeFilter === f ? "#F5EFE6" : "#7A7470",
+              transition: "all 300ms ease-out"
+            }}>{f}</button>
+          ))}
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gridTemplateRows: "auto", gap: 4 }}>
+        {shown.slice(0,3).map((p, i) => (
+          <ProjectCard key={p.title} {...p} col={i === 0 ? "span 7" : "span 5"} />
+        ))}
+        {shown.slice(3).map((p, i) => (
+          <ProjectCard key={p.title} {...p} col={i === 0 ? "span 5" : "span 7"} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProjectCard({ title, loc, cat, desc, col }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ gridColumn: col || "span 6", position: "relative", overflow: "hidden", cursor: "pointer" }}
+    >
+      <div style={{
+        background: `repeating-linear-gradient(135deg, #2C2420 0px, #2C2420 20px, #1C1916 20px, #1C1916 40px)`,
+        aspectRatio: "4/3", width: "100%",
+        transform: hovered ? "scale(1.03)" : "scale(1)",
+        transition: "transform 600ms ease-out"
+      }}></div>
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(to top, rgba(28,25,22,0.90) 0%, transparent 60%)",
+        opacity: hovered ? 1 : 0.7,
+        transition: "opacity 400ms ease-out"
+      }}></div>
+      <div style={{ position: "absolute", bottom: 24, left: 24, right: 24, zIndex: 2 }}>
+        <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A882", marginBottom: 6 }}>{cat}</div>
+        <div style={{ fontSize: 15, fontWeight: 700, color: "#F5EFE6", lineHeight: 1.2, marginBottom: 4 }}>{title}</div>
+        <div style={{ fontSize: 10, color: "#B8B2AA", fontWeight: 300, letterSpacing: "0.04em" }}>{desc} · {loc}</div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── TESTIMONIAL ─── */
+function Testimonial() {
+  return (
+    <section style={{ background: "#1C1916", padding: "120px 80px" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+        <div style={{ display:"flex", justifyContent:"center", marginBottom: 28 }}>
+          <TLMonogram size={64} color="#A67C52" />
+        </div>
+        <blockquote style={{
+          fontSize: "clamp(18px, 2.4vw, 30px)", fontWeight: 700, lineHeight: 1.3,
+          letterSpacing: "-0.01em", color: "#F5EFE6", marginBottom: 40, textWrap: "pretty"
+        }}>
+          Tutto Legno a transformé notre villa en un véritable chef-d'œuvre. Le soin apporté à chaque détail, la qualité du bois massif — c'est exactement le niveau d'exigence que nous attendions.
+        </blockquote>
+        <div style={{ width: 48, height: 1, background: "#A67C52", margin: "0 auto 24px" }}></div>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#C9A882" }}>Kouamé Assouman</div>
+        <div style={{ fontSize: 10, fontWeight: 300, letterSpacing: "0.08em", color: "#7A7470", marginTop: 6 }}>Promoteur immobilier — Cocody, Abidjan</div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── ABOUT SECTION ─── */
+function About() {
+  return (
+    <section style={{ padding: "120px 80px", background: "#F5EFE6" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#A67C52", marginBottom: 20 }}>Notre Histoire</div>
+          <h2 style={{ fontSize: "clamp(24px, 3vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#1C1916", marginBottom: 28, textWrap: "pretty" }}>
+            L'artisanat ivoirien<br/>à hauteur du luxe mondial.
+          </h2>
+          <p style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.8, color: "#7A7470", marginBottom: 20 }}>
+            Fondée à Abidjan, Tutto Legno est née de la conviction que le bois massif mérite d'être travaillé avec la même rigueur qu'un atelier florentin ou milanais.
+          </p>
+          <p style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.8, color: "#7A7470", marginBottom: 40 }}>
+            Chaque projet débute par une écoute attentive. Nos menuisiers, formés aux techniques européennes et africaines, transforment des essences nobles — wengé, acajou, iroko, chêne — en pièces uniques et durables.
+          </p>
+          <button style={{
+            background: "transparent", color: "#1C1916", border: "1.5px solid #1C1916",
+            borderRadius: 2, fontFamily: "var(--font)", fontSize: 10, fontWeight: 700,
+            letterSpacing: "0.16em", textTransform: "uppercase", padding: "14px 32px", cursor: "pointer",
+            transition: "all 400ms ease-out"
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = "#1C1916"; e.currentTarget.style.color = "#F5EFE6"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#1C1916"; }}
+          >Découvrir notre atelier</button>
+        </div>
+        <div>
+          <WoodPhoto label={"photo atelier\n1200 × 900 px"} aspect="4/3" />
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4, marginTop: 4 }}>
+            <WoodPhoto label="détail\nbois massif" aspect="1/1" />
+            <WoodPhoto label="artisan\nat work" aspect="1/1" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CONTACT / CTA SECTION ─── */
+function Contact({ visible }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [msg, setMsg] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const inputStyle = {
+    width: "100%", fontFamily: "var(--font)", fontSize: 13, fontWeight: 400,
+    background: "rgba(245,239,230,0.06)", color: "#F5EFE6",
+    border: "none", borderBottom: "1px solid rgba(201,168,130,0.25)",
+    padding: "14px 0", outline: "none", transition: "border-color 300ms ease-out"
+  };
+
+  if (!visible) return null;
+
+  return (
+    <section id="contact" style={{ background: "#1C1916", padding: "120px 80px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 96, alignItems: "start" }}>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "#A67C52", marginBottom: 20 }}>Contactez-nous</div>
+          <h2 style={{ fontSize: "clamp(24px, 3vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#F5EFE6", marginBottom: 28 }}>
+            Un projet ? Parlons-en.
+          </h2>
+          <p style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.8, color: "#7A7470", marginBottom: 48 }}>
+            Nos experts sont disponibles pour étudier votre projet, établir un devis sur mesure et vous accompagner de la conception à la pose.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            {[
+              { label: "Atelier & Showroom", val: "Abidjan, Côte d'Ivoire" },
+              { label: "Téléphone", val: "+225 00 00 00 00" },
+              { label: "Email", val: "contact@tuttolegno.ci" },
+            ].map(c => (
+              <div key={c.label}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#A67C52", marginBottom: 5 }}>{c.label}</div>
+                <div style={{ fontSize: 13, fontWeight: 400, color: "#B8B2AA" }}>{c.val}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          {sent ? (
+            <div style={{ padding: "60px 40px", background: "rgba(166,124,82,0.08)", border: "1px solid rgba(166,124,82,0.2)", textAlign: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#C9A882", marginBottom: 12 }}>Message envoyé</div>
+              <div style={{ fontSize: 13, color: "#7A7470", lineHeight: 1.7 }}>Nous vous répondrons dans les plus brefs délais.</div>
+              <button onClick={() => setSent(false)} style={{ marginTop: 24, background: "none", border: "1px solid rgba(201,168,130,0.3)", color: "#C9A882", fontFamily: "var(--font)", fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", padding: "10px 20px", cursor: "pointer" }}>Nouveau message</button>
+            </div>
+          ) : (
+            <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+              <div>
+                <label style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#7A7470", display: "block", marginBottom: 8 }}>Nom complet</label>
+                <input value={name} onChange={e => setName(e.target.value)} placeholder="Jean Assouman" required style={inputStyle}
+                  onFocus={e => e.target.style.borderBottomColor = "#A67C52"}
+                  onBlur={e => e.target.style.borderBottomColor = "rgba(201,168,130,0.25)"} />
+              </div>
+              <div>
+                <label style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#7A7470", display: "block", marginBottom: 8 }}>Adresse email</label>
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="jean@exemple.com" required style={inputStyle}
+                  onFocus={e => e.target.style.borderBottomColor = "#A67C52"}
+                  onBlur={e => e.target.style.borderBottomColor = "rgba(201,168,130,0.25)"} />
+              </div>
+              <div>
+                <label style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#7A7470", display: "block", marginBottom: 8 }}>Votre projet</label>
+                <textarea value={msg} onChange={e => setMsg(e.target.value)} placeholder="Décrivez votre projet — surface, essence de bois souhaitée, délais…" rows={4} required style={{ ...inputStyle, resize: "vertical", lineHeight: 1.7 }}
+                  onFocus={e => e.target.style.borderBottomColor = "#A67C52"}
+                  onBlur={e => e.target.style.borderBottomColor = "rgba(201,168,130,0.25)"} />
+              </div>
+              <button type="submit" style={{
+                background: "#A67C52", color: "#F5EFE6", border: "none", borderRadius: 2,
+                fontFamily: "var(--font)", fontSize: 10, fontWeight: 700, letterSpacing: "0.16em",
+                textTransform: "uppercase", padding: "16px 36px", cursor: "pointer", alignSelf: "flex-start",
+                transition: "background 400ms ease-out"
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = "#7A5230"}
+              onMouseLeave={e => e.currentTarget.style.background = "#A67C52"}
+              >Envoyer la demande</button>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FOOTER ─── */
+function Footer() {
+  return (
+    <footer style={{ background: "#0E0C0A", padding: "64px 80px 40px", borderTop: "1px solid rgba(201,168,130,0.1)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 60, marginBottom: 60 }}>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+            <TLMonogram size={40} color="#B8892A" />
+            <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase", color: "#F5EFE6", whiteSpace: "nowrap" }}>TUTTO LEGNO</span>
+          </div>
+          <p style={{ fontSize: 12, fontWeight: 300, lineHeight: 1.8, color: "#7A7470", maxWidth: 280 }}>
+            Menuiserie bois massif haut de gamme.<br/>Abidjan, Côte d'Ivoire.
+          </p>
+          <div style={{ marginTop: 20, fontSize: 10, fontWeight: 300, letterSpacing: "0.06em", color: "#3E3A36", fontStyle: "italic" }}>
+            "Nous faisons de vos rêves une réalité."
+          </div>
+        </div>
+        {[
+          { title: "Services", links: ["Portes & fenêtres", "Mobilier sur mesure", "Escaliers", "Parquet & revêtements"] },
+          { title: "Entreprise", links: ["Nos réalisations", "À propos", "Atelier", "Contact"] },
+          { title: "Contact", links: ["Abidjan, CI", "+225 00 00 00 00", "contact@tuttolegno.ci", "Lun–Ven 8h–17h"] },
+        ].map(col => (
+          <div key={col.title}>
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#A67C52", marginBottom: 16 }}>{col.title}</div>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
+              {col.links.map(l => (
+                <li key={l}><a href="#" style={{ fontSize: 12, fontWeight: 400, color: "#7A7470", textDecoration: "none", transition: "color 300ms ease-out" }}
+                  onMouseEnter={e => e.target.style.color = "#C9A882"}
+                  onMouseLeave={e => e.target.style.color = "#7A7470"}
+                >{l}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 28, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ fontSize: 10, color: "#3E3A36" }}>© 2024 Tutto Legno. Tous droits réservés.</div>
+        <div style={{ fontSize: 10, color: "#3E3A36" }}>Menuiserie haut de gamme · Abidjan</div>
+      </div>
+    </footer>
+  );
+}
+
+/* ─── APP ─── */
+function App() {
+  const [scrolled, setScrolled] = useState(false);
+  const [page, setPage] = useState("home"); // home | contact
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  return (
+    <div>
+      <Navbar scrolled={scrolled} />
+      <Hero onCTA={() => setPage("contact")} />
+      <StatsBand />
+      <Services />
+      <Realisations />
+      <Testimonial />
+      <About />
+      <Contact visible={page === "contact"} />
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TUTTO LEGNO — Logo Final</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #1A1714; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const GOLD = "#B8892A";
+const GOLD_L = "#C9A55A";
+const DARK = "#2B2825";
+const NEAR_BLACK = "#1C1916";
+const WHITE_BG = "#FFFFFF";
+const LINEN = "#F5EFE6";
+const TEXT_DARK = "#1C1916";
+const TEXT_LIGHT = "#F0EBE3";
+const TEXT_MUTED_DARK = "#5A5550";
+const TEXT_MUTED_LIGHT = "#A09890";
+
+/* ══════════════════════════════════════
+   TL MONOGRAM SVG — fidèle au logo fourni
+   Double-stroke rectangle + T + L entrelacés
+   ══════════════════════════════════════ */
+function TLMonogram({ size = 120, color = GOLD }) {
+  // Toutes les proportions sont calculées relativement à size
+  const s = size;
+  const sw = s * 0.06; // stroke width principale
+  const sw2 = s * 0.055; // stroke intérieure légèrement plus fine
+
+  // Outer rectangle: pleine taille avec petite marge
+  const m = s * 0.03; // marge extérieure
+  const gap = s * 0.13; // écart entre double trait
+
+  // Outer rect coords
+  const ox1 = m, oy1 = m, ox2 = s - m, oy2 = s - m;
+  // Inner rect coords (double contour)
+  const ix1 = ox1 + gap, iy1 = oy1 + gap, ix2 = ox2 - gap, iy2 = oy2 - gap;
+
+  // T bar: horizontal en haut, dans le carré intérieur
+  const tBarY = iy1 + (iy2 - iy1) * 0.18;
+  const tBarX1 = ix1 + sw2 / 2;
+  const tBarX2 = ix2 - sw2 / 2;
+  // T stem: vertical du centre
+  const tStemX = (ix1 + ix2) / 2;
+  const tStemY1 = tBarY;
+  const tStemY2 = iy2 - sw2 / 2;
+
+  // L: vertical sur le côté gauche intérieur, horizontal en bas
+  const lX = ix1 + (ix2 - ix1) * 0.22;
+  const lY1 = tBarY + sw * 0.3; // commence sous la barre du T
+  const lY2 = iy2 - sw2 / 2;
+  const lBarX1 = lX;
+  const lBarX2 = ix2 - sw2 / 2;
+
+  return (
+    <svg
+      width={s} height={s}
+      viewBox={`0 0 ${s} ${s}`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Outer rectangle */}
+      <rect
+        x={ox1 + sw/2} y={oy1 + sw/2}
+        width={s - m*2 - sw} height={s - m*2 - sw}
+        stroke={color} strokeWidth={sw} fill="none"
+      />
+      {/* Inner rectangle */}
+      <rect
+        x={ix1 + sw2/2} y={iy1 + sw2/2}
+        width={(ix2 - ix1) - sw2} height={(iy2 - iy1) - sw2}
+        stroke={color} strokeWidth={sw2} fill="none"
+      />
+      {/* T — horizontal bar */}
+      <line
+        x1={tBarX1} y1={tBarY}
+        x2={tBarX2} y2={tBarY}
+        stroke={color} strokeWidth={sw} strokeLinecap="square"
+      />
+      {/* T — vertical stem */}
+      <line
+        x1={tStemX} y1={tStemY1}
+        x2={tStemX} y2={tStemY2}
+        stroke={color} strokeWidth={sw} strokeLinecap="square"
+      />
+      {/* L — vertical */}
+      <line
+        x1={lX} y1={lY1}
+        x2={lX} y2={lY2}
+        stroke={color} strokeWidth={sw} strokeLinecap="square"
+      />
+      {/* L — horizontal base */}
+      <line
+        x1={lBarX1} y1={lY2}
+        x2={lBarX2} y2={lY2}
+        stroke={color} strokeWidth={sw} strokeLinecap="square"
+      />
+    </svg>
+  );
+}
+
+/* ══════════════════════════════════════
+   LOGO COMPLET — version verticale
+   ══════════════════════════════════════ */
+function LogoVertical({ dark = false, size = 120 }) {
+  const textColor    = dark ? TEXT_LIGHT   : TEXT_DARK;
+  const subColor     = dark ? TEXT_MUTED_LIGHT : TEXT_MUTED_DARK;
+  const sloganColor  = dark ? "rgba(240,235,227,0.55)" : "rgba(28,25,22,0.45)";
+
+  return (
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap: 0 }}>
+      {/* Monogram */}
+      <TLMonogram size={size} color={GOLD} />
+
+      {/* TUTTO LEGNO */}
+      <div style={{
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: size * 0.20,
+        fontWeight: 800,
+        letterSpacing: "0.28em",
+        textTransform: "uppercase",
+        color: textColor,
+        lineHeight: 1,
+        marginTop: size * 0.12,
+        paddingRight: "0.28em",
+        whiteSpace: "nowrap",
+      }}>TUTTO LEGNO</div>
+
+      {/* Divider + MENUISERIE HAUT DE GAMME */}
+      <div style={{
+        display: "flex", alignItems: "center", gap: size * 0.09,
+        marginTop: size * 0.10,
+      }}>
+        <div style={{ width: size * 0.22, height: 1, background: GOLD }}></div>
+        <div style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: size * 0.072,
+          fontWeight: 400,
+          letterSpacing: "0.24em",
+          textTransform: "uppercase",
+          color: GOLD,
+          paddingRight: "0.24em",
+          whiteSpace: "nowrap",
+        }}>Menuiserie Haut de Gamme</div>
+        <div style={{ width: size * 0.22, height: 1, background: GOLD }}></div>
+      </div>
+
+      {/* Slogan */}
+      <div style={{
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: size * 0.082,
+        fontWeight: 300,
+        fontStyle: "italic",
+        letterSpacing: "0.04em",
+        color: sloganColor,
+        marginTop: size * 0.09,
+        textAlign: "center",
+      }}>Nous faisons de vos rêves une réalité</div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════
+   LOGO COMPACT — monogramme seul (icône)
+   ══════════════════════════════════════ */
+function LogoIcon({ dark = false, size = 100, circle = true }) {
+  const bg = dark ? NEAR_BLACK : "#FFFFFF";
+  return (
+    <div style={{
+      width: size * 1.5, height: size * 1.5,
+      borderRadius: circle ? "50%" : 0,
+      background: bg,
+      display: "flex", alignItems: "center", justifyContent: "center",
+    }}>
+      <TLMonogram size={size} color={GOLD} />
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════
+   LOGO HORIZONTAL — icône + texte à droite
+   ══════════════════════════════════════ */
+function LogoHorizontal({ dark = false, size = 64 }) {
+  const textColor   = dark ? TEXT_LIGHT  : TEXT_DARK;
+  const subColor    = dark ? TEXT_MUTED_LIGHT : "#7A7470";
+  const sloganColor = dark ? "rgba(240,235,227,0.45)" : "rgba(28,25,22,0.4)";
+
+  return (
+    <div style={{ display:"flex", alignItems:"center", gap: size * 0.32 }}>
+      <TLMonogram size={size} color={GOLD} />
+      <div style={{ display:"flex", flexDirection:"column", gap: size * 0.10 }}>
+        <div style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: size * 0.30,
+          fontWeight: 800,
+          letterSpacing: "0.26em",
+          textTransform: "uppercase",
+          color: textColor,
+          lineHeight: 1,
+          paddingRight: "0.26em",
+        }}>TUTTO LEGNO</div>
+        <div style={{
+          display: "flex", alignItems: "center", gap: size * 0.12,
+        }}>
+          <div style={{ width: size * 0.24, height: 1, background: GOLD }}></div>
+          <div style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: size * 0.095,
+            fontWeight: 400,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: GOLD,
+            paddingRight: "0.22em",
+            whiteSpace: "nowrap",
+          }}>Menuiserie Haut de Gamme</div>
+          <div style={{ width: size * 0.24, height: 1, background: GOLD }}></div>
+        </div>
+        <div style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: size * 0.10,
+          fontWeight: 300,
+          fontStyle: "italic",
+          color: sloganColor,
+          letterSpacing: "0.03em",
+        }}>Nous faisons de vos rêves une réalité</div>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════
+   SHOWCASE PAGE
+   ══════════════════════════════════════ */
+function Divider({ label }) {
+  return (
+    <div style={{ display:"flex", alignItems:"center", gap: 16, margin: "0 0 36px" }}>
+      <div style={{ flex:1, height:1, background:"rgba(184,137,42,0.2)" }}></div>
+      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform:"uppercase", color: "rgba(184,137,42,0.6)", whiteSpace:"nowrap" }}>{label}</div>
+      <div style={{ flex:1, height:1, background:"rgba(184,137,42,0.2)" }}></div>
+    </div>
+  );
+}
+
+function Swatch({ bg, children, pad = "64px 80px" }) {
+  return (
+    <div style={{ background: bg, padding: pad, display:"flex", alignItems:"center", justifyContent:"center", flex:1 }}>
+      {children}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ minHeight:"100vh", background: "#1A1714", padding: "60px 48px", display:"flex", flexDirection:"column", gap: 0 }}>
+
+      {/* Header */}
+      <div style={{ marginBottom: 52 }}>
+        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.24em", textTransform:"uppercase", color: GOLD, marginBottom: 8 }}>Design System · Logo Final</div>
+        <div style={{ fontSize: 22, fontWeight: 700, color: TEXT_LIGHT, letterSpacing: "-0.01em" }}>TUTTO LEGNO — Brand Mark</div>
+      </div>
+
+      {/* Section 1: Logo vertical — fond clair + fond sombre */}
+      <Divider label="Logo complet — Version verticale" />
+      <div style={{ display:"flex", gap: 4, marginBottom: 52 }}>
+        <Swatch bg={WHITE_BG}>
+          <LogoVertical dark={false} size={130} />
+        </Swatch>
+        <Swatch bg={DARK}>
+          <LogoVertical dark={true} size={130} />
+        </Swatch>
+      </div>
+
+      {/* Section 2: Logo horizontal */}
+      <Divider label="Logo horizontal (usage digital / en-tête)" />
+      <div style={{ display:"flex", gap: 4, marginBottom: 52 }}>
+        <Swatch bg={LINEN} pad="48px 64px">
+          <LogoHorizontal dark={false} size={72} />
+        </Swatch>
+        <Swatch bg={NEAR_BLACK} pad="48px 64px">
+          <LogoHorizontal dark={true} size={72} />
+        </Swatch>
+      </div>
+
+      {/* Section 3: Icône seule */}
+      <Divider label="Monogramme seul — icône / profil / favicon" />
+      <div style={{ display:"flex", gap: 32, alignItems:"flex-end", marginBottom: 52, padding:"40px 0" }}>
+        {/* Cercle fond clair */}
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
+          <LogoIcon dark={false} size={96} circle={true} />
+          <div style={{ fontSize:9, color:"rgba(184,137,42,0.6)", letterSpacing:"0.14em", textTransform:"uppercase" }}>400×400 clair</div>
+        </div>
+        {/* Cercle fond sombre */}
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
+          <LogoIcon dark={true} size={96} circle={true} />
+          <div style={{ fontSize:9, color:"rgba(184,137,42,0.6)", letterSpacing:"0.14em", textTransform:"uppercase" }}>400×400 sombre</div>
+        </div>
+        {/* Carré fond clair */}
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
+          <LogoIcon dark={false} size={72} circle={false} />
+          <div style={{ fontSize:9, color:"rgba(184,137,42,0.6)", letterSpacing:"0.14em", textTransform:"uppercase" }}>Carré favicon</div>
+        </div>
+        {/* Carré fond sombre */}
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
+          <LogoIcon dark={true} size={72} circle={false} />
+          <div style={{ fontSize:9, color:"rgba(184,137,42,0.6)", letterSpacing:"0.14em", textTransform:"uppercase" }}>Carré sombre</div>
+        </div>
+        {/* Petit */}
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
+          <LogoIcon dark={false} size={40} circle={true} />
+          <div style={{ fontSize:9, color:"rgba(184,137,42,0.6)", letterSpacing:"0.14em", textTransform:"uppercase" }}>32px min</div>
+        </div>
+        {/* Sur fond or */}
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
+          <div style={{ width:144, height:144, borderRadius:"50%", background: GOLD, display:"flex", alignItems:"center", justifyContent:"center" }}>
+            <TLMonogram size={96} color={NEAR_BLACK} />
+          </div>
+          <div style={{ fontSize:9, color:"rgba(184,137,42,0.6)", letterSpacing:"0.14em", textTransform:"uppercase" }}>Sur fond or</div>
+        </div>
+      </div>
+
+      {/* Section 4: Usage print / embossage */}
+      <Divider label="Usage monochrome — impression / embossage" />
+      <div style={{ display:"flex", gap: 4, marginBottom: 20 }}>
+        <Swatch bg="#FFFFFF" pad="40px 80px">
+          <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap: 0 }}>
+            <TLMonogram size={90} color={TEXT_DARK} />
+            <div style={{ fontFamily:"'Montserrat',sans-serif", fontSize:21, fontWeight:800, letterSpacing:"0.26em", textTransform:"uppercase", color:TEXT_DARK, marginTop:14, paddingRight:"0.26em" }}>TUTTO LEGNO</div>
+            <div style={{ display:"flex", alignItems:"center", gap:10, marginTop:8 }}>
+              <div style={{ width:36, height:1, background:TEXT_DARK, opacity:0.4 }}></div>
+              <div style={{ fontFamily:"'Montserrat',sans-serif", fontSize:7.5, fontWeight:400, letterSpacing:"0.22em", textTransform:"uppercase", color:TEXT_DARK, opacity:0.6, paddingRight:"0.22em" }}>Menuiserie Haut de Gamme</div>
+              <div style={{ width:36, height:1, background:TEXT_DARK, opacity:0.4 }}></div>
+            </div>
+          </div>
+        </Swatch>
+        <Swatch bg={NEAR_BLACK} pad="40px 80px">
+          <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap: 0 }}>
+            <TLMonogram size={90} color={TEXT_LIGHT} />
+            <div style={{ fontFamily:"'Montserrat',sans-serif", fontSize:21, fontWeight:800, letterSpacing:"0.26em", textTransform:"uppercase", color:TEXT_LIGHT, marginTop:14, paddingRight:"0.26em" }}>TUTTO LEGNO</div>
+            <div style={{ display:"flex", alignItems:"center", gap:10, marginTop:8 }}>
+              <div style={{ width:36, height:1, background:TEXT_LIGHT, opacity:0.35 }}></div>
+              <div style={{ fontFamily:"'Montserrat',sans-serif", fontSize:7.5, fontWeight:400, letterSpacing:"0.22em", textTransform:"uppercase", color:TEXT_LIGHT, opacity:0.5, paddingRight:"0.22em" }}>Menuiserie Haut de Gamme</div>
+              <div style={{ width:36, height:1, background:TEXT_LIGHT, opacity:0.35 }}></div>
+            </div>
+          </div>
+        </Swatch>
+      </div>
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

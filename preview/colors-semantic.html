@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 24px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .chip { border-radius: 2px; overflow: hidden; }
+  .chip-color { height: 48px; }
+  .chip-info { padding: 8px 10px; background: white; }
+  .chip-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #3E3A36; }
+  .chip-hex { font-size: 10px; font-family: 'Courier New', monospace; color: #7A7470; margin-top: 2px; }
+  .chip-desc { font-size: 9px; color: #B8B2AA; margin-top: 3px; letter-spacing: 0.03em; }
+  .row2 { margin-top: 16px; display: flex; gap: 16px; align-items: center; }
+  .accent-block { display: flex; gap: 10px; align-items: center; }
+  .accent-dot { width: 40px; height: 40px; border-radius: 2px; }
+  .accent-text .chip-name { color: #3E3A36; }
+</style>
+</head>
+<body>
+<div class="section-label">Couleurs Sémantiques & Accent</div>
+<div class="grid">
+  <div class="chip">
+    <div class="chip-color" style="background:#F5EFE6; border:1px solid #E8D8C0;"></div>
+    <div class="chip-info"><div class="chip-name">BG Principal</div><div class="chip-hex">#F5EFE6</div><div class="chip-desc">Fond chaud linen</div></div>
+  </div>
+  <div class="chip">
+    <div class="chip-color" style="background:#F4F2EF; border:1px solid #E2DED8;"></div>
+    <div class="chip-info"><div class="chip-name">BG Alternatif</div><div class="chip-hex">#F4F2EF</div><div class="chip-desc">Sections alternées</div></div>
+  </div>
+  <div class="chip">
+    <div class="chip-color" style="background:#A67C52;"></div>
+    <div class="chip-info"><div class="chip-name">Primaire</div><div class="chip-hex">#A67C52</div><div class="chip-desc">CTA, liens actifs</div></div>
+  </div>
+  <div class="chip">
+    <div class="chip-color" style="background:#1C1916;"></div>
+    <div class="chip-info"><div class="chip-name">Texte</div><div class="chip-hex">#1C1916</div><div class="chip-desc">Corps & titres</div></div>
+  </div>
+  <div class="chip">
+    <div class="chip-color" style="background:#7A7470;"></div>
+    <div class="chip-info"><div class="chip-name">Texte muted</div><div class="chip-hex">#7A7470</div><div class="chip-desc">Sous-titres, caption</div></div>
+  </div>
+</div>
+<div class="row2">
+  <div class="accent-block">
+    <div class="accent-dot" style="background:#D4A853;"></div>
+    <div class="accent-text">
+      <div class="chip-name" style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#3E3A36;">Gold Light</div>
+      <div class="chip-hex" style="font-size:11px;font-family:'Courier New',monospace;color:#7A7470;">#D4A853</div>
+      <div class="chip-desc" style="font-size:10px;color:#B8B2AA;">Hover, séparateurs</div>
+    </div>
+  </div>
+  <div class="accent-block">
+    <div class="accent-dot" style="background:#B8892A;"></div>
+    <div class="accent-text">
+      <div class="chip-name" style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#3E3A36;">Gold</div>
+      <div class="chip-hex" style="font-size:11px;font-family:'Courier New',monospace;color:#7A7470;">#B8892A</div>
+      <div class="chip-desc" style="font-size:10px;color:#B8B2AA;">Accents décoratifs</div>
+    </div>
+  </div>
+  <div style="margin-left:auto; padding: 12px 20px; background: #1C1916; border-radius: 2px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A882;">Sur fond sombre</div>
+    <div style="font-size:9px;color:#7A7470;margin-top:3px;">Texte brun clair sur noir profond</div>
+  </div>
+</div>
+</body>
+</html>

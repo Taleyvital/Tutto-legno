@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 24px; }
+  .swatches { display: flex; gap: 0; height: 100px; border-radius: 2px; overflow: hidden; }
+  .swatch { flex: 1; position: relative; display: flex; align-items: flex-end; padding: 10px 12px; }
+  .swatch-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; line-height: 1.4; }
+  .meta { display: flex; gap: 32px; margin-top: 20px; }
+  .item { }
+  .item-dot { width: 36px; height: 36px; border-radius: 50%; margin-bottom: 8px; }
+  .item-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #3E3A36; }
+  .item-hex { font-size: 11px; font-weight: 400; color: #7A7470; margin-top: 2px; font-family: 'Courier New', monospace; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<div class="section-label">Gamme Marron — Bois Massif</div>
+<div class="swatches">
+  <div class="swatch" style="background:#F5EFE6;">
+    <div class="swatch-label" style="color:#7A5230;">50<br>Linen</div>
+  </div>
+  <div class="swatch" style="background:#E8D8C0;">
+    <div class="swatch-label" style="color:#7A5230;">100<br>Sable</div>
+  </div>
+  <div class="swatch" style="background:#C9A882;">
+    <div class="swatch-label" style="color:#4A2E14;">200<br>Chêne</div>
+  </div>
+  <div class="swatch" style="background:#A67C52;">
+    <div class="swatch-label" style="color:#F5EFE6;">300<br>Noyer ★</div>
+  </div>
+  <div class="swatch" style="background:#7A5230;">
+    <div class="swatch-label" style="color:#E8D8C0;">400<br>Wengé</div>
+  </div>
+  <div class="swatch" style="background:#4A2E14;">
+    <div class="swatch-label" style="color:#C9A882;">500<br>Espresso</div>
+  </div>
+</div>
+<div class="meta">
+  <div class="item"><div class="item-dot" style="background:#F5EFE6; border:1px solid #E8D8C0;"></div><div class="item-name">Brown 50</div><div class="item-hex">#F5EFE6</div></div>
+  <div class="item"><div class="item-dot" style="background:#E8D8C0;"></div><div class="item-name">Brown 100</div><div class="item-hex">#E8D8C0</div></div>
+  <div class="item"><div class="item-dot" style="background:#C9A882;"></div><div class="item-name">Brown 200</div><div class="item-hex">#C9A882</div></div>
+  <div class="item"><div class="item-dot" style="background:#A67C52;"></div><div class="item-name">Brown 300 ★</div><div class="item-hex">#A67C52</div></div>
+  <div class="item"><div class="item-dot" style="background:#7A5230;"></div><div class="item-name">Brown 400</div><div class="item-hex">#7A5230</div></div>
+  <div class="item"><div class="item-dot" style="background:#4A2E14;"></div><div class="item-name">Brown 500</div><div class="item-hex">#4A2E14</div></div>
+</div>
+</body>
+</html>

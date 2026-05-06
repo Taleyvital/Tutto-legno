@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 24px; }
+  .swatches { display: flex; gap: 0; height: 100px; border-radius: 2px; overflow: hidden; }
+  .swatch { flex: 1; position: relative; display: flex; align-items: flex-end; padding: 10px 12px; }
+  .swatch-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; line-height: 1.4; }
+  .meta { display: flex; gap: 32px; margin-top: 20px; }
+  .item { }
+  .item-dot { width: 36px; height: 36px; border-radius: 50%; margin-bottom: 8px; }
+  .item-name { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #3E3A36; }
+  .item-hex { font-size: 11px; font-weight: 400; color: #7A7470; margin-top: 2px; font-family: 'Courier New', monospace; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<div class="section-label">Gamme Gris — Anthracite / Perle</div>
+<div class="swatches">
+  <div class="swatch" style="background:#F4F2EF;">
+    <div class="swatch-label" style="color:#7A7470;">50<br>Perle</div>
+  </div>
+  <div class="swatch" style="background:#E2DED8;">
+    <div class="swatch-label" style="color:#7A7470;">100<br>Lin gris</div>
+  </div>
+  <div class="swatch" style="background:#B8B2AA;">
+    <div class="swatch-label" style="color:#3E3A36;">200<br>Gris moyen</div>
+  </div>
+  <div class="swatch" style="background:#7A7470;">
+    <div class="swatch-label" style="color:#F4F2EF;">300<br>Gris sombre</div>
+  </div>
+  <div class="swatch" style="background:#3E3A36;">
+    <div class="swatch-label" style="color:#E2DED8;">400<br>Anthracite ★</div>
+  </div>
+  <div class="swatch" style="background:#1C1916;">
+    <div class="swatch-label" style="color:#B8B2AA;">500<br>Noir profond</div>
+  </div>
+</div>
+<div class="meta">
+  <div class="item"><div class="item-dot" style="background:#F4F2EF; border:1px solid #E2DED8;"></div><div class="item-name">Grey 50</div><div class="item-hex">#F4F2EF</div></div>
+  <div class="item"><div class="item-dot" style="background:#E2DED8;"></div><div class="item-name">Grey 100</div><div class="item-hex">#E2DED8</div></div>
+  <div class="item"><div class="item-dot" style="background:#B8B2AA;"></div><div class="item-name">Grey 200</div><div class="item-hex">#B8B2AA</div></div>
+  <div class="item"><div class="item-dot" style="background:#7A7470;"></div><div class="item-name">Grey 300</div><div class="item-hex">#7A7470</div></div>
+  <div class="item"><div class="item-dot" style="background:#3E3A36;"></div><div class="item-name">Grey 400 ★</div><div class="item-hex">#3E3A36</div></div>
+  <div class="item"><div class="item-dot" style="background:#1C1916;"></div><div class="item-name">Grey 500</div><div class="item-hex">#1C1916</div></div>
+</div>
+</body>
+</html>

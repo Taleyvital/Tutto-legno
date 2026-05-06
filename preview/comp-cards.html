@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F4F2EF; font-family: 'Montserrat', sans-serif; padding: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 20px; }
+  .cards { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+
+  /* Product Card */
+  .product-card {
+    width: 200px; background: #fff;
+    box-shadow: 0 4px 16px rgba(74,46,20,0.10);
+    overflow: hidden; flex-shrink: 0;
+  }
+  .card-img {
+    width: 100%; height: 130px; position: relative; overflow: hidden;
+    background: repeating-linear-gradient(
+      45deg, #E8D8C0 0px, #E8D8C0 8px, #F5EFE6 8px, #F5EFE6 16px
+    );
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-img-label {
+    font-size: 9px; font-family: 'Courier New', monospace;
+    color: #A67C52; text-align: center; line-height: 1.5;
+    background: rgba(245,239,230,0.85); padding: 6px 10px;
+  }
+  .card-body { padding: 16px; }
+  .card-category { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 6px; }
+  .card-title { font-size: 14px; font-weight: 700; line-height: 1.25; color: #1C1916; margin-bottom: 8px; }
+  .card-desc { font-size: 11px; font-weight: 400; line-height: 1.6; color: #7A7470; }
+  .card-footer { padding: 12px 16px; border-top: 1px solid #F4F2EF; display: flex; align-items: center; justify-content: space-between; }
+  .card-link { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #A67C52; text-decoration: none; }
+  .card-badge { font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; background: #E8D8C0; color: #7A5230; padding: 3px 8px; border-radius: 9999px; }
+
+  /* Horizontal card */
+  .horiz-card {
+    width: 420px; background: #fff; display: flex;
+    box-shadow: 0 4px 16px rgba(74,46,20,0.10); overflow: hidden; flex-shrink: 0;
+  }
+  .horiz-img {
+    width: 140px; flex-shrink: 0;
+    background: repeating-linear-gradient(
+      45deg, #E8D8C0 0px, #E8D8C0 8px, #F5EFE6 8px, #F5EFE6 16px
+    );
+    display: flex; align-items: center; justify-content: center;
+  }
+  .horiz-body { padding: 20px; flex: 1; }
+</style>
+</head>
+<body>
+<div class="section-label">Carte Produit</div>
+<div class="cards">
+  <!-- Card 1 -->
+  <div class="product-card">
+    <div class="card-img">
+      <div class="card-img-label">photo produit<br>400×300px</div>
+    </div>
+    <div class="card-body">
+      <div class="card-category">Portes intérieures</div>
+      <div class="card-title">Porte en chêne massif</div>
+      <div class="card-desc">Façonnée à la main, finition huilée naturelle. Disponible en toutes dimensions.</div>
+    </div>
+    <div class="card-footer">
+      <span class="card-link">Voir le projet →</span>
+      <span class="card-badge">Sur-mesure</span>
+    </div>
+  </div>
+
+  <!-- Card 2 — Hover state (shadow lg) -->
+  <div class="product-card" style="box-shadow:0 8px 40px rgba(74,46,20,0.18);transform:translateY(-2px);">
+    <div class="card-img">
+      <div class="card-img-label">photo produit<br>400×300px</div>
+    </div>
+    <div class="card-body">
+      <div class="card-category">Mobilier</div>
+      <div class="card-title">Bibliothèque wengé sur mesure</div>
+      <div class="card-desc">Structure en wengé africain, tablettes ajustables, finition mat satiné.</div>
+    </div>
+    <div class="card-footer">
+      <span class="card-link">Voir le projet →</span>
+      <span class="card-badge">Haut de gamme</span>
+    </div>
+  </div>
+
+  <!-- Card 3 — Dark variant -->
+  <div class="product-card" style="background:#1C1916;">
+    <div class="card-img" style="background:repeating-linear-gradient(45deg,#2C2420 0,#2C2420 8px,#1C1916 8px,#1C1916 16px);">
+      <div class="card-img-label" style="background:rgba(28,25,22,0.7);color:#C9A882;">photo produit<br>400×300px</div>
+    </div>
+    <div class="card-body">
+      <div class="card-category" style="color:#C9A882;">Escaliers</div>
+      <div class="card-title" style="color:#F5EFE6;">Escalier hélicoïdal en acajou</div>
+      <div class="card-desc" style="color:#7A7470;">Structure en acajou massif, garde-corps forgé sur mesure.</div>
+    </div>
+    <div class="card-footer" style="border-top:1px solid rgba(255,255,255,0.08);">
+      <span class="card-link" style="color:#C9A882;">Voir le projet →</span>
+      <span class="card-badge" style="background:rgba(201,168,130,0.15);color:#C9A882;">Exclusif</span>
+    </div>
+  </div>
+</div>
+
+<!-- Horizontal Card -->
+<div style="margin-top:20px;">
+  <div class="horiz-card">
+    <div class="horiz-img">
+      <div style="font-size:9px;font-family:'Courier New',monospace;color:#A67C52;padding:12px;text-align:center;line-height:1.5;">photo<br>réalisation</div>
+    </div>
+    <div class="horiz-body">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#A67C52;margin-bottom:6px;">Réalisation</div>
+      <div style="font-size:15px;font-weight:700;line-height:1.2;color:#1C1916;margin-bottom:8px;">Villa Les Palmiers, Cocody</div>
+      <div style="font-size:11px;line-height:1.65;color:#7A7470;">Menuiserie complète intérieure et extérieure — 340 m² de bois massif posé.</div>
+      <div style="margin-top:12px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#A67C52;">Voir la réalisation →</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

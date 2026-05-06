@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F4F2EF; font-family: 'Montserrat', sans-serif; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; padding: 20px 24px 12px; }
+
+  /* ---- NAVBAR LIGHT ---- */
+  .navbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+    background: #F5EFE6;
+    border-bottom: 1px solid #E8D8C0;
+  }
+  .nav-logo {
+    font-size: 16px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #1C1916;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-mark {
+    width: 28px; height: 28px;
+    background: #A67C52;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark span { font-size: 13px; font-weight: 800; color: #F5EFE6; letter-spacing: 0; }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #3E3A36; text-decoration: none; transition: color 300ms ease-out;
+  }
+  .nav-links a.active { color: #A67C52; }
+  .nav-links a:hover { color: #A67C52; }
+  .nav-cta {
+    background: #A67C52; color: #F5EFE6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 11px 22px; border: none; border-radius: 2px; cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* ---- NAVBAR DARK ---- */
+  .navbar-dark {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+    background: #1C1916;
+  }
+  .nav-links-dark {
+    display: flex; align-items: center; gap: 36px; list-style: none;
+  }
+  .nav-links-dark a {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #B8B2AA; text-decoration: none;
+  }
+  .nav-links-dark a.active { color: #C9A882; }
+  .nav-cta-light {
+    background: transparent; color: #F5EFE6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 10px 22px; border: 1.5px solid rgba(245,239,230,0.35); border-radius: 2px; cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* ---- NAVBAR SCROLLED / TRANSPARENT ---- */
+  .navbar-trans {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+    background: rgba(28,25,22,0.72);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,130,0.12);
+  }
+
+  .variant-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #B8B2AA; padding: 8px 24px 4px;
+  }
+</style>
+</head>
+<body>
+<div class="section-label">Barre de Navigation</div>
+
+<!-- Light -->
+<div class="variant-label">Fond clair</div>
+<nav class="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-mark"><span>TL</span></div>
+    TUTTO LEGNO
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Accueil</a></li>
+    <li><a href="#">Réalisations</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">À propos</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Demander un devis</button>
+</nav>
+
+<!-- Dark -->
+<div class="variant-label" style="background:#1C1916;color:#7A7470;">Fond sombre</div>
+<nav class="navbar-dark">
+  <div class="nav-logo" style="color:#F5EFE6;">
+    <div class="nav-logo-mark"><span>TL</span></div>
+    TUTTO LEGNO
+  </div>
+  <ul class="nav-links-dark">
+    <li><a href="#">Accueil</a></li>
+    <li><a href="#" class="active">Réalisations</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">À propos</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <button class="nav-cta-light">Demander un devis</button>
+</nav>
+
+<!-- Transparent / scroll -->
+<div class="variant-label" style="background:#3E3A36;color:#7A7470;">Transparente (hero overlay)</div>
+<div style="background: repeating-linear-gradient(45deg, #3E3A36 0,#3E3A36 8px,#2C2820 8px,#2C2820 16px);">
+  <nav class="navbar-trans">
+    <div class="nav-logo" style="color:#F5EFE6;">
+      <div class="nav-logo-mark"><span>TL</span></div>
+      TUTTO LEGNO
+    </div>
+    <ul class="nav-links-dark">
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">Réalisations</a></li>
+      <li><a href="#" class="active">Services</a></li>
+      <li><a href="#">À propos</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="nav-cta">Demander un devis</button>
+  </nav>
+</div>
+</body>
+</html>

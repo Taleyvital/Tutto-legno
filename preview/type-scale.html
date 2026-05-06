@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 28px 32px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 20px; }
+  .row { display: flex; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid #E8D8C0; }
+  .row:last-child { border-bottom: none; }
+  .meta { min-width: 130px; flex-shrink: 0; }
+  .meta-name { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7A7470; }
+  .meta-spec { font-size: 9px; font-family: 'Courier New', monospace; color: #B8B2AA; margin-top: 3px; }
+  .specimen { flex: 1; }
+</style>
+</head>
+<body>
+<div class="section-label">Hiérarchie Typographique</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">Display</div>
+    <div class="meta-spec">88px / Bold 700<br>tracking: −0.02em</div>
+  </div>
+  <div class="specimen" style="font-size:clamp(36px,5vw,72px);font-weight:700;line-height:1.05;letter-spacing:-0.02em;color:#1C1916;">TUTTO LEGNO</div>
+</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">H1</div>
+    <div class="meta-spec">64px / Bold 700<br>tracking: −0.02em</div>
+  </div>
+  <div class="specimen" style="font-size:clamp(28px,3.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#1C1916;">Menuiserie haut de gamme</div>
+</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">H2</div>
+    <div class="meta-spec">48px / Bold 700<br>tracking: −0.02em</div>
+  </div>
+  <div class="specimen" style="font-size:clamp(22px,2.8vw,40px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1C1916;">Découvrez nos réalisations</div>
+</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">H3</div>
+    <div class="meta-spec">36px / Bold 700</div>
+  </div>
+  <div class="specimen" style="font-size:clamp(18px,2.2vw,30px);font-weight:700;line-height:1.2;color:#1C1916;">Portes & Fenêtres sur mesure</div>
+</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">Subheading</div>
+    <div class="meta-spec">22px / Light 300<br>tracking: +0.05em</div>
+  </div>
+  <div class="specimen" style="font-size:clamp(15px,1.6vw,20px);font-weight:300;line-height:1.6;letter-spacing:0.05em;color:#7A7470;">Nous faisons de vos rêves une réalité</div>
+</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">Body</div>
+    <div class="meta-spec">16px / Regular 400<br>leading: 1.7</div>
+  </div>
+  <div class="specimen" style="font-size:15px;font-weight:400;line-height:1.7;color:#1C1916;">Chaque pièce est façonnée à la main dans notre atelier d'Abidjan, en bois massif sélectionné pour ses qualités esthétiques et sa durabilité exceptionnelle.</div>
+</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">Caption</div>
+    <div class="meta-spec">14px / Regular 400<br>tracking: +0.05em</div>
+  </div>
+  <div class="specimen" style="font-size:13px;font-weight:400;line-height:1.5;letter-spacing:0.05em;color:#7A7470;">Villa Cocody — Abidjan, 2024</div>
+</div>
+
+<div class="row">
+  <div class="meta">
+    <div class="meta-name">Label</div>
+    <div class="meta-spec">12px / Bold 700<br>tracking: +0.20em, CAPS</div>
+  </div>
+  <div class="specimen" style="font-size:11px;font-weight:700;line-height:1;letter-spacing:0.20em;text-transform:uppercase;color:#7A7470;">SUR-MESURE · BOIS MASSIF</div>
+</div>
+</body>
+</html>

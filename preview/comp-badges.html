@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F5EFE6; font-family: 'Montserrat', sans-serif; padding: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A67C52; margin-bottom: 20px; }
+  .row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+  .row-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B8B2AA; min-width: 80px; }
+
+  .badge {
+    display: inline-flex; align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 9999px;
+    white-space: nowrap;
+  }
+  .badge-primary { background: #A67C52; color: #F5EFE6; }
+  .badge-outline { background: transparent; color: #A67C52; border: 1px solid #A67C52; }
+  .badge-dark { background: #1C1916; color: #C9A882; }
+  .badge-light { background: #E8D8C0; color: #7A5230; }
+  .badge-grey { background: #E2DED8; color: #3E3A36; }
+  .badge-outline-dark { background: transparent; color: #1C1916; border: 1px solid #3E3A36; }
+
+  /* Tag chip */
+  .tag {
+    display: inline-flex; align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 0;
+    background: #F5EFE6; color: #7A7470; border: 1px solid #E8D8C0;
+  }
+  .tag-active { background: #A67C52; color: #F5EFE6; border-color: #A67C52; }
+</style>
+</head>
+<body>
+<div class="section-label">Badges & Tags</div>
+
+<div class="row">
+  <div class="row-label">Filled</div>
+  <span class="badge badge-primary">Sur-mesure</span>
+  <span class="badge badge-dark">Haut de gamme</span>
+  <span class="badge badge-light">Bois massif</span>
+  <span class="badge badge-grey">Livraison incluse</span>
+</div>
+
+<div class="row">
+  <div class="row-label">Outline</div>
+  <span class="badge badge-outline">Sur-mesure</span>
+  <span class="badge badge-outline-dark">Artisanat</span>
+  <span class="badge" style="background:transparent;color:#F5EFE6;border:1px solid rgba(245,239,230,0.4);display:inline-flex;align-items:center;font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:5px 12px;border-radius:9999px;" >
+    <span style="display:inline-block;background:#1C1916;padding:4px 10px;border-radius:9999px;">Nouveau projet</span>
+  </span>
+</div>
+
+<div class="row">
+  <div class="row-label">Tags filtre</div>
+  <span class="tag tag-active">Tous</span>
+  <span class="tag">Portes</span>
+  <span class="tag">Fenêtres</span>
+  <span class="tag">Mobilier</span>
+  <span class="tag">Escaliers</span>
+  <span class="tag">Parquet</span>
+</div>
+
+<div class="row" style="margin-top:8px;background:#1C1916;padding:14px 18px;border-radius:2px;">
+  <span class="badge" style="background:#C9A882;color:#1C1916;display:inline-flex;align-items:center;font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:5px 12px;border-radius:9999px;">Sur-mesure</span>
+  <span class="badge" style="background:transparent;color:#C9A882;border:1px solid rgba(201,168,130,0.4);display:inline-flex;align-items:center;font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:5px 12px;border-radius:9999px;">Haut de gamme</span>
+  <span class="badge" style="background:rgba(245,239,230,0.08);color:#F5EFE6;border:1px solid rgba(245,239,230,0.15);display:inline-flex;align-items:center;font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:5px 12px;border-radius:9999px;">Nouveau</span>
+</div>
+</body>
+</html>

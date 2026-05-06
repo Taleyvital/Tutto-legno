@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TUTTO LEGNO — Logo Variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #2A2520; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+/* ══════════════════════════════════════════════════════════
+   TUTTO LEGNO — Logo Variations
+   3 variations × 3 colorways = 9 artboards
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── TOKENS ─── */
+const T = {
+  espresso:  "#4A2E14",
+  brown:     "#7A4A2A",
+  brownMid:  "#A67C52",
+  gold:      "#B8892A",
+  goldLight: "#D4A853",
+  linen:     "#F5EFE6",
+  lineDark:  "#E8D8C0",
+  anthracite:"#3A3632",
+  nearBlack: "#1C1916",
+  font: "'Montserrat', 'Helvetica Neue', sans-serif",
+};
+
+
+/* ══════════════════════════════════════════════════════════
+   VARIATION 1 — WORDMARK PUR
+   "TUTTO LEGNO" espacé, sobre, élégant
+   ══════════════════════════════════════════════════════════ */
+
+function Logo1Light() {
+  return (
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap: 10 }}>
+      <div style={{
+        fontFamily: T.font,
+        fontSize: 32, fontWeight: 800,
+        letterSpacing: "0.38em",
+        textTransform: "uppercase",
+        color: T.espresso,
+        lineHeight: 1,
+        paddingRight: "0.38em", /* compensate last char tracking */
+      }}>TUTTO LEGNO</div>
+      <div style={{
+        display: "flex", alignItems: "center", gap: 14,
+        width: "100%", justifyContent: "center"
+      }}>
+        <div style={{ flex: 1, height: 1, background: T.brownMid, opacity: 0.35 }}></div>
+        <div style={{
+          fontFamily: T.font,
+          fontSize: 9, fontWeight: 300,
+          letterSpacing: "0.32em",
+          textTransform: "uppercase",
+          color: T.brownMid,
+          whiteSpace: "nowrap",
+          paddingRight: "0.32em",
+        }}>Menuiserie sur-mesure</div>
+        <div style={{ flex: 1, height: 1, background: T.brownMid, opacity: 0.35 }}></div>
+      </div>
+    </div>
+  );
+}
+
+function Logo1Dark() {
+  return (
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap: 10 }}>
+      <div style={{
+        fontFamily: T.font,
+        fontSize: 32, fontWeight: 800,
+        letterSpacing: "0.38em",
+        textTransform: "uppercase",
+        color: T.linen,
+        lineHeight: 1,
+        paddingRight: "0.38em",
+      }}>TUTTO LEGNO</div>
+      <div style={{ display:"flex", alignItems:"center", gap: 14, width:"100%", justifyContent:"center" }}>
+        <div style={{ flex:1, height:1, background: T.brownMid, opacity:0.4 }}></div>
+        <div style={{
+          fontFamily: T.font, fontSize: 9, fontWeight: 300,
+          letterSpacing: "0.32em", textTransform: "uppercase",
+          color: T.brownMid, whiteSpace:"nowrap", paddingRight:"0.32em",
+        }}>Menuiserie sur-mesure</div>
+        <div style={{ flex:1, height:1, background: T.brownMid, opacity:0.4 }}></div>
+      </div>
+    </div>
+  );
+}
+
+function Logo1Gold() {
+  return (
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap: 10 }}>
+      <div style={{
+        fontFamily: T.font, fontSize: 32, fontWeight: 800,
+        letterSpacing: "0.38em", textTransform: "uppercase",
+        color: T.gold, lineHeight: 1, paddingRight: "0.38em",
+      }}>TUTTO LEGNO</div>
+      <div style={{ display:"flex", alignItems:"center", gap: 14, width:"100%", justifyContent:"center" }}>
+        <div style={{ flex:1, height:1, background: T.gold, opacity:0.4 }}></div>
+        <div style={{
+          fontFamily: T.font, fontSize: 9, fontWeight: 300,
+          letterSpacing: "0.32em", textTransform: "uppercase",
+          color: T.goldLight, whiteSpace:"nowrap", paddingRight:"0.32em",
+        }}>Menuiserie sur-mesure</div>
+        <div style={{ flex:1, height:1, background: T.gold, opacity:0.4 }}></div>
+      </div>
+    </div>
+  );
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   VARIATION 2 — MONOGRAMME GÉOMÉTRIQUE + TEXTE
+   Losange TL entrelacé + wordmark à droite
+   ══════════════════════════════════════════════════════════ */
+
+/* SVG Monogram: T et L entrelacés dans un carré épuré */
+function TLMark({ size = 48, color = T.espresso, accent = T.gold }) {
+  const s = size;
+  return (
+    <svg width={s} height={s} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Outer square frame */}
+      <rect x="1" y="1" width="46" height="46" stroke={color} strokeWidth="1.5" fill="none"/>
+      {/* T stroke — horizontal bar */}
+      <line x1="10" y1="13" x2="38" y2="13" stroke={color} strokeWidth="2.5" strokeLinecap="square"/>
+      {/* T stroke — vertical */}
+      <line x1="24" y1="13" x2="24" y2="35" stroke={color} strokeWidth="2.5" strokeLinecap="square"/>
+      {/* L stroke — vertical */}
+      <line x1="14" y1="22" x2="14" y2="38" stroke={accent} strokeWidth="2.5" strokeLinecap="square"/>
+      {/* L stroke — horizontal */}
+      <line x1="14" y1="38" x2="34" y2="38" stroke={accent} strokeWidth="2.5" strokeLinecap="square"/>
+      {/* Corner accent dots */}
+      <rect x="1" y="1" width="4" height="4" fill={accent}/>
+      <rect x="43" y="43" width="4" height="4" fill={accent}/>
+    </svg>
+  );
+}
+
+function Logo2Light() {
+  return (
+    <div style={{ display:"flex", alignItems:"center", gap: 20 }}>
+      <TLMark size={56} color={T.espresso} accent={T.gold} />
+      <div style={{ display:"flex", flexDirection:"column", gap: 5 }}>
+        <div style={{
+          fontFamily: T.font, fontSize: 22, fontWeight: 800,
+          letterSpacing: "0.32em", textTransform: "uppercase",
+          color: T.espresso, lineHeight: 1, paddingRight:"0.32em",
+        }}>TUTTO LEGNO</div>
+        <div style={{
+          fontFamily: T.font, fontSize: 8, fontWeight: 300,
+          letterSpacing: "0.28em", textTransform: "uppercase",
+          color: T.brownMid, paddingRight:"0.28em",
+        }}>Menuiserie sur-mesure · Abidjan</div>
+      </div>
+    </div>
+  );
+}
+
+function Logo2Dark() {
+  return (
+    <div style={{ display:"flex", alignItems:"center", gap: 20 }}>
+      <TLMark size={56} color={T.linen} accent={T.gold} />
+      <div style={{ display:"flex", flexDirection:"column", gap: 5 }}>
+        <div style={{
+          fontFamily: T.font, fontSize: 22, fontWeight: 800,
+          letterSpacing: "0.32em", textTransform: "uppercase",
+          color: T.linen, lineHeight: 1, paddingRight:"0.32em",
+        }}>TUTTO LEGNO</div>
+        <div style={{
+          fontFamily: T.font, fontSize: 8, fontWeight: 300,
+          letterSpacing: "0.28em", textTransform: "uppercase",
+          color: T.brownMid, paddingRight:"0.28em",
+        }}>Menuiserie sur-mesure · Abidjan</div>
+      </div>
+    </div>
+  );
+}
+
+function Logo2Gold() {
+  return (
+    <div style={{ display:"flex", alignItems:"center", gap: 20 }}>
+      <TLMark size={56} color={T.gold} accent={T.linen} />
+      <div style={{ display:"flex", flexDirection:"column", gap: 5 }}>
+        <div style={{
+          fontFamily: T.font, fontSize: 22, fontWeight: 800,
+          letterSpacing: "0.32em", textTransform: "uppercase",
+          color: T.gold, lineHeight: 1, paddingRight:"0.32em",
+        }}>TUTTO LEGNO</div>
+        <div style={{
+          fontFamily: T.font, fontSize: 8, fontWeight: 300,
+          letterSpacing: "0.28em", textTransform: "uppercase",
+          color: T.goldLight, paddingRight:"0.28em",
+        }}>Menuiserie sur-mesure · Abidjan</div>
+      </div>
+    </div>
+  );
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   VARIATION 3 — EMBLÈME VERTICAL (stacked crest)
+   Grain de bois stylisé + texte empilé + ornement
+   ══════════════════════════════════════════════════════════ */
+
+/* SVG: grain de bois abstrait — lignes courbes parallèles */
+function WoodGrainMark({ size = 60, color = T.espresso, accent = T.gold }) {
+  const s = size;
+  return (
+    <svg width={s} height={Math.round(s * 0.72)} viewBox="0 0 60 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Bounding rectangle — crest shape */}
+      <rect x="0.75" y="0.75" width="58.5" height="41.5" stroke={color} strokeWidth="1.5" fill="none"/>
+      {/* Wood grain — 5 curved arcs suggesting cross-section */}
+      <path d="M 8 22 Q 30 10 52 22" stroke={color} strokeWidth="1.2" fill="none" opacity="0.5"/>
+      <path d="M 8 22 Q 30 14 52 22" stroke={color} strokeWidth="1.2" fill="none" opacity="0.7"/>
+      <path d="M 8 22 Q 30 18 52 22" stroke={color} strokeWidth="1.4" fill="none"/>
+      <path d="M 8 22 Q 30 26 52 22" stroke={color} strokeWidth="1.4" fill="none"/>
+      <path d="M 8 22 Q 30 30 52 22" stroke={color} strokeWidth="1.2" fill="none" opacity="0.7"/>
+      <path d="M 8 22 Q 30 34 52 22" stroke={color} strokeWidth="1.2" fill="none" opacity="0.5"/>
+      {/* Central dot — medullary ray */}
+      <circle cx="30" cy="22" r="2.5" fill={accent}/>
+      {/* Corner ticks */}
+      <line x1="0" y1="0" x2="6" y2="0" stroke={accent} strokeWidth="2"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke={accent} strokeWidth="2"/>
+      <line x1="60" y1="0" x2="54" y2="0" stroke={accent} strokeWidth="2"/>
+      <line x1="60" y1="0" x2="60" y2="6" stroke={accent} strokeWidth="2"/>
+      <line x1="0" y1="43" x2="6" y2="43" stroke={accent} strokeWidth="2"/>
+      <line x1="0" y1="43" x2="0" y2="37" stroke={accent} strokeWidth="2"/>
+      <line x1="60" y1="43" x2="54" y2="43" stroke={accent} strokeWidth="2"/>
+      <line x1="60" y1="43" x2="60" y2="37" stroke={accent} strokeWidth="2"/>
+    </svg>
+  );
+}
+
+function Logo3({ bg, markColor, accentColor, textColor, subColor }) {
+  return (
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap: 12 }}>
+      <WoodGrainMark size={96} color={markColor} accent={accentColor} />
+      <div style={{ display:"flex", alignItems:"center", gap: 10, width:"100%" }}>
+        <div style={{ flex:1, height:"1px", background: accentColor, opacity:0.5 }}></div>
+        <div style={{
+          fontFamily: T.font, fontSize: 9, fontWeight: 700,
+          letterSpacing: "0.3em", textTransform: "uppercase",
+          color: accentColor, paddingRight:"0.3em",
+        }}>✦</div>
+        <div style={{ flex:1, height:"1px", background: accentColor, opacity:0.5 }}></div>
+      </div>
+      <div style={{
+        fontFamily: T.font, fontSize: 26, fontWeight: 800,
+        letterSpacing: "0.42em", textTransform: "uppercase",
+        color: textColor, lineHeight: 1, paddingRight:"0.42em",
+        textAlign: "center",
+      }}>TUTTO LEGNO</div>
+      <div style={{
+        fontFamily: T.font, fontSize: 8, fontWeight: 300,
+        letterSpacing: "0.28em", textTransform: "uppercase",
+        color: subColor, paddingRight:"0.28em", textAlign:"center",
+      }}>Menuiserie sur-mesure · Abidjan</div>
+    </div>
+  );
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   APP — Design Canvas
+   ══════════════════════════════════════════════════════════ */
+
+const { DCSection, DCArtboard } = window;
+
+/* Artboard wrapper with background + centered logo */
+function AB({ bg, children, w = 560, h = 200 }) {
+  return (
+    <div style={{
+      width: w, height: h, background: bg,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      padding: 40,
+    }}>
+      {children}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DCSection id="logos" title="TUTTO LEGNO — Logo Variations">
+
+      {/* ── VARIATION 1: WORDMARK PUR ── */}
+      <DCArtboard id="v1-light" label="V1 · Wordmark — Fond Lin" width={560} height={200}>
+        <AB bg={T.linen} w={560} h={200}>
+          <Logo1Light />
+        </AB>
+      </DCArtboard>
+
+      <DCArtboard id="v1-dark" label="V1 · Wordmark — Fond Espresso" width={560} height={200}>
+        <AB bg={T.espresso} w={560} h={200}>
+          <Logo1Dark />
+        </AB>
+      </DCArtboard>
+
+      <DCArtboard id="v1-anthracite" label="V1 · Wordmark — Fond Anthracite + Or" width={560} height={200}>
+        <AB bg={T.anthracite} w={560} h={200}>
+          <Logo1Gold />
+        </AB>
+      </DCArtboard>
+
+      {/* ── VARIATION 2: MONOGRAMME ── */}
+      <DCArtboard id="v2-light" label="V2 · Monogramme TL — Fond Lin" width={560} height={200}>
+        <AB bg={T.linen} w={560} h={200}>
+          <Logo2Light />
+        </AB>
+      </DCArtboard>
+
+      <DCArtboard id="v2-dark" label="V2 · Monogramme TL — Fond Espresso" width={560} height={200}>
+        <AB bg={T.espresso} w={560} h={200}>
+          <Logo2Dark />
+        </AB>
+      </DCArtboard>
+
+      <DCArtboard id="v2-anthracite" label="V2 · Monogramme TL — Fond Anthracite + Or" width={560} height={200}>
+        <AB bg={T.anthracite} w={560} h={200}>
+          <Logo2Gold />
+        </AB>
+      </DCArtboard>
+
+      {/* ── VARIATION 3: EMBLÈME VERTICAL ── */}
+      <DCArtboard id="v3-light" label="V3 · Emblème Grain de Bois — Fond Lin" width={560} height={280}>
+        <AB bg={T.linen} w={560} h={280}>
+          <Logo3 bg={T.linen} markColor={T.espresso} accentColor={T.gold} textColor={T.espresso} subColor={T.brownMid} />
+        </AB>
+      </DCArtboard>
+
+      <DCArtboard id="v3-dark" label="V3 · Emblème Grain de Bois — Fond Espresso" width={560} height={280}>
+        <AB bg={T.espresso} w={560} h={280}>
+          <Logo3 bg={T.espresso} markColor={T.lineDark} accentColor={T.gold} textColor={T.linen} subColor={T.brownMid} />
+        </AB>
+      </DCArtboard>
+
+      <DCArtboard id="v3-anthracite" label="V3 · Emblème Grain de Bois — Fond Anthracite + Or" width={560} height={280}>
+        <AB bg={T.anthracite} w={560} h={280}>
+          <Logo3 bg={T.anthracite} markColor={T.gold} accentColor={T.linen} textColor={T.gold} subColor={T.goldLight} />
+        </AB>
+      </DCArtboard>
+
+    </DCSection>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

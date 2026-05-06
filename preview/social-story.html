@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #2C2820; font-family: 'Montserrat', sans-serif; padding: 32px; display: flex; gap: 32px; align-items: flex-start; }
+
+  .story-label { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #7A7470; margin-bottom: 10px; }
+
+  /* Story: 1080x1920 — scaled to 180x320 */
+  .story {
+    width: 180px; height: 320px;
+    position: relative; overflow: hidden;
+    background: #1C1916;
+    flex-shrink: 0;
+  }
+
+  .story-photo {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      160deg,
+      #2C2420 0px, #2C2420 16px,
+      #1C1916 16px, #1C1916 32px
+    );
+  }
+  .story-photo-label {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 8px; font-family: 'Courier New', monospace; color: #A67C52;
+    text-align: center; background: rgba(28,25,22,0.8); padding: 8px 12px; line-height: 1.5;
+  }
+  .story-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,25,22,0.95) 0%, rgba(28,25,22,0.3) 55%, rgba(28,25,22,0.6) 100%);
+  }
+
+  /* Story header */
+  .story-header {
+    position: absolute; top: 14px; left: 14px; right: 14px; z-index: 3;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .story-logo-mark {
+    width: 18px; height: 18px; background: #A67C52;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .story-logo-mark span { font-size: 7px; font-weight: 800; color: #F5EFE6; }
+  .story-logo-name { font-size: 7px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F5EFE6; }
+
+  /* Story progress bar */
+  .story-progress {
+    position: absolute; top: 8px; left: 10px; right: 10px; z-index: 4;
+    display: flex; gap: 2px;
+  }
+  .progress-seg { flex: 1; height: 2px; background: rgba(245,239,230,0.3); border-radius: 1px; }
+  .progress-seg.done { background: rgba(245,239,230,0.9); }
+  .progress-seg.active { background: linear-gradient(to right, rgba(245,239,230,0.9) 60%, rgba(245,239,230,0.3) 60%); }
+
+  /* Story content */
+  .story-content {
+    position: absolute; bottom: 22px; left: 16px; right: 16px; z-index: 3;
+  }
+  .story-eyebrow { font-size: 7px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #C9A882; margin-bottom: 8px; }
+  .story-quote { font-size: 13px; font-weight: 700; line-height: 1.25; color: #F5EFE6; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .story-cta {
+    display: inline-block; background: #A67C52; color: #F5EFE6;
+    font-size: 7px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 8px 14px; border-radius: 2px;
+  }
+
+  /* Story variant — light/clean */
+  .story-light {
+    width: 180px; height: 320px;
+    position: relative; overflow: hidden;
+    background: #F5EFE6;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Story 1 — Sombre avec photo -->
+<div>
+  <div class="story-label">Story IG/FB 1080×1920 — Photo + citation</div>
+  <div class="story">
+    <div class="story-photo"></div>
+    <div class="story-photo-label">photo<br>1080×1920</div>
+    <div class="story-overlay"></div>
+    <div class="story-progress">
+      <div class="progress-seg done"></div>
+      <div class="progress-seg active"></div>
+      <div class="progress-seg"></div>
+    </div>
+    <div class="story-header">
+      <div class="story-logo-mark"><span>TL</span></div>
+      <span class="story-logo-name">Tutto Legno</span>
+    </div>
+    <div class="story-content">
+      <div class="story-eyebrow">Nous faisons de vos rêves</div>
+      <div class="story-quote">"Chaque grain de bois raconte une histoire unique."</div>
+      <div class="story-cta">Demander un devis →</div>
+    </div>
+  </div>
+</div>
+
+<!-- Story 2 — Fond brun avec typographie -->
+<div>
+  <div class="story-label">Story — Fond marron + texte</div>
+  <div class="story" style="background:#4A2E14;">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(166,124,82,0.08) 0,rgba(166,124,82,0.08) 20px,transparent 20px,transparent 40px);"></div>
+    <div class="story-progress">
+      <div class="progress-seg done"></div>
+      <div class="progress-seg done"></div>
+      <div class="progress-seg active"></div>
+    </div>
+    <div class="story-header">
+      <div class="story-logo-mark" style="background:#F5EFE6;"><span style="color:#1C1916;">TL</span></div>
+      <span class="story-logo-name">Tutto Legno</span>
+    </div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px;text-align:center;z-index:3;">
+      <div style="font-size:8px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:#C9A882;margin-bottom:16px;">TUTTO LEGNO</div>
+      <div style="font-size:7px;font-weight:400;letter-spacing:0.06em;color:rgba(245,239,230,0.5);margin-bottom:20px;">✦</div>
+      <div style="font-size:16px;font-weight:700;line-height:1.2;color:#F5EFE6;letter-spacing:-0.01em;margin-bottom:12px;">"Nous faisons de vos rêves une réalité."</div>
+      <div style="font-size:7px;font-weight:400;letter-spacing:0.06em;color:rgba(245,239,230,0.5);margin-bottom:20px;">✦</div>
+      <div style="font-size:7px;font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:#C9A882;">Menuiserie haut de gamme · Abidjan</div>
+    </div>
+    <div style="position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;z-index:3;">
+      <div style="background:rgba(245,239,230,0.12);color:#F5EFE6;font-size:7px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:8px 16px;border-radius:2px;border:1px solid rgba(245,239,230,0.2);">Voir nos projets</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
