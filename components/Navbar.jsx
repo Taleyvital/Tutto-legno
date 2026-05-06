@@ -68,7 +68,7 @@ export default function Navbar() {
 
         <button className="hamburger" onClick={() => setMenuOpen(o => !o)} style={{
           background: 'none', border: 'none', cursor: 'pointer', padding: 8,
-          display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'center', justifyContent: 'center',
+          flexDirection: 'column', gap: 5, alignItems: 'center', justifyContent: 'center',
         }}>
           <span style={{ display: 'block', width: 24, height: 2, background: '#F5EFE6', transition: 'all 300ms', transform: menuOpen ? 'rotate(45deg) translateY(7px)' : 'none' }} />
           <span style={{ display: 'block', width: 24, height: 2, background: '#F5EFE6', transition: 'all 300ms', opacity: menuOpen ? 0 : 1 }} />
