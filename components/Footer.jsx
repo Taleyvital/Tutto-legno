@@ -11,7 +11,7 @@ const COLS = [
 export default function Footer() {
   return (
     <footer style={{ background: '#0E0C0A', padding: '64px 80px 40px', borderTop: '1px solid rgba(201,168,130,0.1)' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 60, marginBottom: 60 }}>
+      <div className="footer-grid">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
             <TLMonogram size={96} />

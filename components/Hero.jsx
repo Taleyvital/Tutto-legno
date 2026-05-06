@@ -14,7 +14,7 @@ export default function Hero() {
         background: 'linear-gradient(to top, rgba(28,25,22,0.96) 0%, rgba(28,25,22,0.55) 50%, rgba(28,25,22,0.4) 100%)',
       }} />
 
-      <div style={{ position: 'relative', zIndex: 2, padding: '0 80px 96px', maxWidth: 900 }}>
+      <div className="hero-pad" style={{ position: 'relative', zIndex: 2, maxWidth: 900 }}>
         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#C9A882', marginBottom: 20 }}>
           MENUISERIE BOIS MASSIF · ABIDJAN
         </div>

@@ -4,13 +4,13 @@ import TLMonogram from './TLMonogram';
 
 export default function Testimonial() {
   return (
-    <section style={{ background: '#1C1916', padding: '120px 80px' }}>
+    <section className="section-dark" style={{ background: '#1C1916' }}>
       <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
-          <TLMonogram size={150} />
+          <TLMonogram size={100} />
         </div>
         <blockquote style={{
-          fontSize: 'clamp(18px, 2.4vw, 30px)', fontWeight: 700, lineHeight: 1.3,
+          fontSize: 'clamp(16px, 2.4vw, 30px)', fontWeight: 700, lineHeight: 1.3,
           letterSpacing: '-0.01em', color: '#F5EFE6', marginBottom: 40,
         }}>
           Tutto Legno a transformé notre villa en un véritable chef-d&apos;œuvre. Le soin apporté à chaque détail, la qualité du bois massif — c&apos;est exactement le niveau d&apos;exigence que nous attendions.

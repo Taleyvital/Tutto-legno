@@ -22,8 +22,8 @@ export default function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section id="contact" style={{ background: '#1C1916', padding: '120px 80px' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'start' }}>
+    <section id="contact" className="section-dark" style={{ background: '#1C1916' }}>
+      <div className="contact-grid">
         <div>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#A67C52', marginBottom: 20 }}>Contactez-nous</div>
           <h2 style={{ fontSize: 'clamp(24px, 3vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: '#F5EFE6', marginBottom: 28 }}>

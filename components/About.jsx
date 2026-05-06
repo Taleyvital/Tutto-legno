@@ -19,8 +19,8 @@ function WoodPhoto({ label, aspect }) {
 
 export default function About() {
   return (
-    <section style={{ padding: '120px 80px', background: '#F5EFE6' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
+    <section className="section-pad" style={{ background: '#F5EFE6' }}>
+      <div className="about-grid">
         <div>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#A67C52', marginBottom: 20 }}>Notre Histoire</div>
           <h2 style={{ fontSize: 'clamp(24px, 3vw, 44px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: '#1C1916', marginBottom: 28 }}>

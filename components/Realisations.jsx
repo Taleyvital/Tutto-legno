@@ -5,11 +5,11 @@ import { useState } from 'react';
 const FILTERS = ['Tous', 'Portes', 'Mobilier', 'Escaliers', 'Parquet'];
 
 const PROJECTS = [
-  { title: 'Villa Les Palmiers',  loc: 'Cocody, 2024',   cat: 'Mobilier',  desc: 'Aménagement complet 340 m²' },
-  { title: 'Résidence Bel Air',   loc: 'Angré, 2024',    cat: 'Portes',    desc: '12 portes chêne massif' },
-  { title: 'Penthouse Plateau',   loc: 'Plateau, 2023',  cat: 'Escaliers', desc: 'Escalier hélicoïdal acajou' },
-  { title: 'Villa Tropicale',     loc: 'Riviera 3, 2023',cat: 'Parquet',   desc: '280 m² parquet iroko' },
-  { title: "Manoir d'Attoban",    loc: 'Attoban, 2023',  cat: 'Mobilier',  desc: 'Bibliothèque & dressing wengé' },
+  { title: 'Villa Les Palmiers',  loc: 'Cocody, 2024',    cat: 'Mobilier',  desc: 'Aménagement complet 340 m²' },
+  { title: 'Résidence Bel Air',   loc: 'Angré, 2024',     cat: 'Portes',    desc: '12 portes chêne massif' },
+  { title: 'Penthouse Plateau',   loc: 'Plateau, 2023',   cat: 'Escaliers', desc: 'Escalier hélicoïdal acajou' },
+  { title: 'Villa Tropicale',     loc: 'Riviera 3, 2023', cat: 'Parquet',   desc: '280 m² parquet iroko' },
+  { title: "Manoir d'Attoban",    loc: 'Attoban, 2023',   cat: 'Mobilier',  desc: 'Bibliothèque & dressing wengé' },
 ];
 
 function ProjectCard({ title, loc, cat, desc, col }) {
@@ -46,7 +46,7 @@ export default function Realisations() {
   const shown = activeFilter === 'Tous' ? PROJECTS : PROJECTS.filter(p => p.cat === activeFilter);
 
   return (
-    <section style={{ padding: '120px 80px', background: '#F4F2EF' }}>
+    <section className="section-pad" style={{ background: '#F4F2EF' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 52, flexWrap: 'wrap', gap: 24 }}>
         <div>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#A67C52', marginBottom: 16 }}>Nos Réalisations</div>
@@ -54,7 +54,7 @@ export default function Realisations() {
             Chaque projet raconte<br />une histoire unique.
           </h2>
         </div>
-        <div style={{ display: 'flex', gap: 2 }}>
+        <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
           {FILTERS.map(f => (
             <button key={f} onClick={() => setActiveFilter(f)} style={{
               fontFamily: 'inherit', fontSize: 9, fontWeight: 700, letterSpacing: '0.16em',
@@ -66,7 +66,7 @@ export default function Realisations() {
           ))}
         </div>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 4 }}>
+      <div className="real-grid">
         {shown.slice(0, 3).map((p, i) => (
           <ProjectCard key={p.title} {...p} col={i === 0 ? 'span 7' : 'span 5'} />
         ))}
