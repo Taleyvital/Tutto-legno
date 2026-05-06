@@ -3,7 +3,13 @@
 import { useState, useEffect } from 'react';
 import TLMonogram from './TLMonogram';
 
-const LINKS = ['Accueil', 'Réalisations', 'Services', 'À propos', 'Contact'];
+const LINKS = [
+  { label: 'Accueil',      href: '/' },
+  { label: 'Réalisations', href: '/#realisations' },
+  { label: 'Services',     href: '/#services' },
+  { label: 'À propos',     href: '/a-propos' },
+  { label: 'Contact',      href: '/#contact' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,15 +41,15 @@ export default function Navbar() {
         </div>
 
         <ul className="nav-links" style={{ alignItems: 'center', gap: 36, listStyle: 'none' }}>
-          {LINKS.map(link => (
-            <li key={link}>
-              <a href="#" style={{
+          {LINKS.map(({ label, href }) => (
+            <li key={label}>
+              <a href={href} style={{
                 fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
                 color: '#B8B2AA', textDecoration: 'none', transition: 'color 300ms ease-out',
               }}
               onMouseEnter={e => e.target.style.color = '#C9A882'}
               onMouseLeave={e => e.target.style.color = '#B8B2AA'}
-              >{link}</a>
+              >{label}</a>
             </li>
           ))}
         </ul>
@@ -71,8 +77,8 @@ export default function Navbar() {
       </nav>
 
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
-        {LINKS.map(link => (
-          <a key={link} href="#" onClick={() => setMenuOpen(false)}>{link}</a>
+        {LINKS.map(({ label, href }) => (
+          <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
         ))}
         <a href="#contact" className="mobile-cta" onClick={() => setMenuOpen(false)}>
           Demander un devis
