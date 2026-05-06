@@ -1,10 +1,10 @@
 'use client';
 
 const STATS = [
-  { n: '20+',     label: "Années d'expérience" },
-  { n: '340+',    label: 'Projets réalisés' },
   { n: '100%',    label: 'Bois massif certifié' },
-  { n: 'Abidjan', label: 'Atelier & showroom' },
+  { n: 'Sur mesure', label: 'Chaque projet, unique' },
+  { n: 'Abidjan', label: 'Atelier à Cocody Abatta' },
+  { n: '48h',     label: 'Délai de réponse' },
 ];
 
 export default function StatsBand() {
