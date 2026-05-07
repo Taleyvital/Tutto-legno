@@ -8,6 +8,10 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
+export const metadata = {
+  title: 'Tutto Legno | Menuiserie Bois Massif Haut de Gamme à Abidjan',
+};
+
 export default function HomePage() {
   return (
     <div>
