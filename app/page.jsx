@@ -1,12 +1,12 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import StatsBand from '@/components/StatsBand';
-import Services from '@/components/Services';
-import Realisations from '@/components/Realisations';
-import Testimonial from '@/components/Testimonial';
-import About from '@/components/About';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import StatsBand from '../components/StatsBand';
+import Services from '../components/Services';
+import Realisations from '../components/Realisations';
+import Testimonial from '../components/Testimonial';
+import About from '../components/About';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 export const metadata = {
   title: 'Tutto Legno | Menuiserie Bois Massif Haut de Gamme à Abidjan',

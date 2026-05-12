@@ -5,7 +5,7 @@ import TLMonogram from './TLMonogram';
 const COLS = [
   { title: 'Services',   links: ['Portes & fenêtres', 'Mobilier sur mesure', 'Escaliers', 'Parquet & revêtements'] },
   { title: 'Entreprise', links: ['Nos réalisations', 'À propos', 'Atelier', 'Contact'] },
-  { title: 'Contact',    links: ["Abidjan, CI", '+225 00 00 00 00', 'contact@tuttolegno.ci', 'Lun–Ven 8h–17h'] },
+  { title: 'Contact',    links: ["Abidjan, CI", '+225 00 00 00 00', 'Tuttolegn00@gmail.com', 'Lun–Ven 8h–17h'] },
 ];
 
 export default function Footer() {

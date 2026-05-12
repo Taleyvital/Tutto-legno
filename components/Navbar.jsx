@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import TLMonogram from './TLMonogram';
 
 const LINKS = [
@@ -43,18 +44,18 @@ export default function Navbar() {
         <ul className="nav-links" style={{ alignItems: 'center', gap: 36, listStyle: 'none' }}>
           {LINKS.map(({ label, href }) => (
             <li key={label}>
-              <a href={href} style={{
+              <Link href={href} style={{
                 fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
                 color: '#B8B2AA', textDecoration: 'none', transition: 'color 300ms ease-out',
               }}
               onMouseEnter={e => e.target.style.color = '#C9A882'}
               onMouseLeave={e => e.target.style.color = '#B8B2AA'}
-              >{label}</a>
+              >{label}</Link>
             </li>
           ))}
         </ul>
 
-        <a href="#contact" className="nav-cta" style={{
+        <Link href="/#contact" className="nav-cta" style={{
           background: '#A67C52', color: '#F5EFE6', border: 'none', borderRadius: 2,
           fontFamily: 'inherit', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em',
           textTransform: 'uppercase', padding: '12px 24px', cursor: 'pointer',
@@ -64,7 +65,7 @@ export default function Navbar() {
         onMouseLeave={e => e.currentTarget.style.background = '#A67C52'}
         >
           Demander un devis
-        </a>
+        </Link>
 
         <button className="hamburger" onClick={() => setMenuOpen(o => !o)} style={{
           background: 'none', border: 'none', cursor: 'pointer', padding: 8,
@@ -78,11 +79,11 @@ export default function Navbar() {
 
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
         {LINKS.map(({ label, href }) => (
-          <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+          <Link key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</Link>
         ))}
-        <a href="#contact" className="mobile-cta" onClick={() => setMenuOpen(false)}>
+        <Link href="/#contact" className="mobile-cta" onClick={() => setMenuOpen(false)}>
           Demander un devis
-        </a>
+        </Link>
       </div>
     </>
   );

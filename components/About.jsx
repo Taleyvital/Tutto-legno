@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 function WoodPhoto({ label, aspect }) {
   return (
     <div style={{
@@ -32,18 +34,20 @@ export default function About() {
           <p style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.8, color: '#7A7470', marginBottom: 40 }}>
             Chaque projet débute par une écoute attentive. Nos menuisiers, formés aux techniques européennes et africaines, transforment des essences nobles — wengé, acajou, iroko, chêne — en pièces uniques et durables.
           </p>
-          <button
+          <Link
+            href="/a-propos"
             style={{
+              display: 'inline-block', textDecoration: 'none',
               background: 'transparent', color: '#1C1916', border: '1.5px solid #1C1916',
               borderRadius: 2, fontFamily: 'inherit', fontSize: 10, fontWeight: 700,
-              letterSpacing: '0.16em', textTransform: 'uppercase', padding: '14px 32px', cursor: 'pointer',
+              letterSpacing: '0.16em', textTransform: 'uppercase', padding: '14px 32px',
               transition: 'all 400ms ease-out',
             }}
             onMouseEnter={e => { e.currentTarget.style.background = '#1C1916'; e.currentTarget.style.color = '#F5EFE6'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1C1916'; }}
           >
             Découvrir notre atelier
-          </button>
+          </Link>
         </div>
         <div>
           <WoodPhoto label={"photo atelier\n1200 × 900 px"} aspect="4/3" />

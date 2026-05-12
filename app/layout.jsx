@@ -1,5 +1,6 @@
 import { Montserrat } from 'next/font/google';
 import './globals.css';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -11,10 +12,10 @@ const montserrat = Montserrat({
 export const metadata = {
   title: 'Tutto Legno | Menuiserie Bois Massif Haut de Gamme — Abidjan',
   description:
-    'Tutto Legno, menuiserie bois massif haut de gamme à Cocody Abatta, Abidjan. Portes sur mesure, cuisines européennes, dressings et meubles TV pour projets résidentiels et immobiliers d'exception.',
+    "Tutto Legno, menuiserie bois massif haut de gamme à Cocody Abatta, Abidjan. Portes sur mesure, cuisines européennes, dressings et meubles TV pour projets résidentiels et immobiliers d'exception.",
   keywords: [
     'menuiserie Abidjan',
-    'bois massif Côte d\'Ivoire',
+    "bois massif Côte d'Ivoire",
     'porte sur mesure Abidjan',
     'cuisine européenne Abidjan',
     'dressing sur mesure',
@@ -28,7 +29,7 @@ export const metadata = {
   openGraph: {
     title: 'Tutto Legno | Menuiserie Haut de Gamme — Abidjan',
     description:
-      'Tutto Legno, menuiserie bois massif haut de gamme à Cocody Abatta, Abidjan. Portes sur mesure, cuisines européennes, dressings et meubles TV pour projets résidentiels et immobiliers d'exception.',
+      "Tutto Legno, menuiserie bois massif haut de gamme à Cocody Abatta, Abidjan. Portes sur mesure, cuisines européennes, dressings et meubles TV pour projets résidentiels et immobiliers d'exception.",
     url: 'https://tutto-legno.ci',
     siteName: 'Tutto Legno',
     locale: 'fr_CI',
@@ -38,7 +39,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Tutto Legno | Menuiserie Haut de Gamme — Abidjan',
     description:
-      'Tutto Legno, menuiserie bois massif haut de gamme à Cocody Abatta, Abidjan. Portes sur mesure, cuisines européennes, dressings et meubles TV pour projets résidentiels et immobiliers d'exception.',
+      "Tutto Legno, menuiserie bois massif haut de gamme à Cocody Abatta, Abidjan. Portes sur mesure, cuisines européennes, dressings et meubles TV pour projets résidentiels et immobiliers d'exception.",
   },
 };
 
@@ -79,7 +80,10 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }

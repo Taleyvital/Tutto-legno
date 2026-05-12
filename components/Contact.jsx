@@ -12,7 +12,7 @@ const inputStyle = {
 const CONTACTS = [
   { label: 'Atelier & Showroom', val: "Abidjan, Côte d'Ivoire" },
   { label: 'Téléphone',          val: '+225 00 00 00 00' },
-  { label: 'Email',              val: 'contact@tuttolegno.ci' },
+  { label: 'Email',              val: 'Tuttolegn00@gmail.com' },
 ];
 
 export default function Contact() {
