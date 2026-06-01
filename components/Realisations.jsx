@@ -223,12 +223,13 @@ export default function Realisations() {
         </div>
       </div>
       <div className="real-grid">
-        {shown.slice(0, 3).map((p, i) => (
-          <ProjectCard key={p.title} {...p} col={i === 0 ? 'span 7' : 'span 5'} />
-        ))}
-        {shown.slice(3).map((p, i) => (
-          <ProjectCard key={p.title} {...p} col={i === 0 ? 'span 5' : 'span 7'} />
-        ))}
+        {shown.map((p, i) => {
+          const col = i % 4 === 0 ? 'span 7'
+                    : i % 4 === 1 ? 'span 5'
+                    : i % 4 === 2 ? 'span 5'
+                    :               'span 7';
+          return <ProjectCard key={p.title} {...p} col={col} />;
+        })}
       </div>
     </section>
   );
