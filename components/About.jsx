@@ -2,20 +2,15 @@
 
 import Link from 'next/link';
 
-function WoodPhoto({ label, aspect }) {
+function Photo({ src, aspect, pos }) {
   return (
     <div style={{
       aspectRatio: aspect, width: '100%',
-      background: 'repeating-linear-gradient(135deg, #E8D8C0 0px, #E8D8C0 18px, #F5EFE6 18px, #F5EFE6 36px)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      position: 'relative', overflow: 'hidden',
-    }}>
-      <div style={{
-        fontFamily: "'Courier New', monospace", fontSize: 11, color: '#A67C52',
-        background: 'rgba(245,239,230,0.85)', padding: '8px 16px', textAlign: 'center', lineHeight: 1.6,
-        whiteSpace: 'pre',
-      }}>{label}</div>
-    </div>
+      backgroundImage: `url('${src}')`,
+      backgroundSize: 'cover',
+      backgroundPosition: pos || 'center',
+      overflow: 'hidden',
+    }} />
   );
 }
 
@@ -50,10 +45,10 @@ export default function About() {
           </Link>
         </div>
         <div>
-          <WoodPhoto label={"photo atelier\n1200 × 900 px"} aspect="4/3" />
+          <Photo src="/chantier/equipe-livraison.jpeg" aspect="4/3" pos="center top" />
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, marginTop: 4 }}>
-            <WoodPhoto label={"détail\nbois massif"} aspect="1/1" />
-            <WoodPhoto label={"artisan\nat work"} aspect="1/1" />
+            <Photo src="/chantier/pose-parquet-2.jpeg" aspect="1/1" pos="center center" />
+            <Photo src="/chantier/pose-plafond.jpeg" aspect="1/1" pos="center 30%" />
           </div>
         </div>
       </div>

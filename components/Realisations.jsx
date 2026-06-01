@@ -5,14 +5,14 @@ import { useState } from 'react';
 const FILTERS = ['Tous', 'Portes', 'Mobilier', 'Escaliers', 'Parquet'];
 
 const PROJECTS = [
-  { title: 'Villa Les Palmiers',  loc: 'Cocody, 2024',    cat: 'Mobilier',  desc: 'Aménagement complet 340 m²' },
-  { title: 'Résidence Bel Air',   loc: 'Angré, 2024',     cat: 'Portes',    desc: '12 portes chêne massif' },
-  { title: 'Penthouse Plateau',   loc: 'Plateau, 2023',   cat: 'Escaliers', desc: 'Escalier hélicoïdal acajou' },
-  { title: 'Villa Tropicale',     loc: 'Riviera 3, 2023', cat: 'Parquet',   desc: '280 m² parquet iroko' },
-  { title: "Manoir d'Attoban",    loc: 'Attoban, 2023',   cat: 'Mobilier',  desc: 'Bibliothèque & dressing wengé' },
+  { title: 'Villa Les Palmiers',  loc: 'Cocody, 2024',    cat: 'Mobilier',  desc: 'Aménagement complet 340 m²',    img: '/chantier/livraison-showcase.jpeg',  pos: 'center center' },
+  { title: 'Résidence Bel Air',   loc: 'Angré, 2024',     cat: 'Portes',    desc: '12 portes chêne massif',        img: '/chantier/pose-porte.jpeg',          pos: 'center 30%' },
+  { title: 'Penthouse Plateau',   loc: 'Plateau, 2023',   cat: 'Escaliers', desc: 'Plafond bois massif acajou',    img: '/chantier/pose-plafond-2.jpeg',      pos: 'center top' },
+  { title: 'Villa Tropicale',     loc: 'Riviera 3, 2023', cat: 'Parquet',   desc: '280 m² parquet iroko',          img: '/chantier/pose-parquet.jpeg',        pos: 'center center' },
+  { title: "Manoir d'Attoban",    loc: 'Attoban, 2023',   cat: 'Mobilier',  desc: 'Pose parquet & finition',       img: '/chantier/poncage-parquet.jpeg',     pos: 'center center' },
 ];
 
-function ProjectCard({ title, loc, cat, desc, col }) {
+function ProjectCard({ title, loc, cat, desc, col, img, pos }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
@@ -21,7 +21,10 @@ function ProjectCard({ title, loc, cat, desc, col }) {
       style={{ gridColumn: col || 'span 6', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}
     >
       <div style={{
-        background: 'repeating-linear-gradient(135deg, #2C2420 0px, #2C2420 20px, #1C1916 20px, #1C1916 40px)',
+        backgroundImage: img ? `url('${img}')` : undefined,
+        background: img ? undefined : 'repeating-linear-gradient(135deg, #2C2420 0px, #2C2420 20px, #1C1916 20px, #1C1916 40px)',
+        backgroundSize: 'cover',
+        backgroundPosition: pos || 'center',
         aspectRatio: '4/3', width: '100%',
         transform: hovered ? 'scale(1.03)' : 'scale(1)',
         transition: 'transform 600ms ease-out',
