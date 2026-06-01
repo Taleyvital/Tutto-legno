@@ -111,13 +111,16 @@ function ServiceBlock({ num, cat, title, desc, detail, icon, img, reverse }) {
       {/* Image */}
       <div className="service-block-img" style={{ order: reverse ? 1 : 2 }}>
         {img ? (
-          <div style={{
-            position: 'absolute', inset: 0,
-            backgroundImage: `url('${img}')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transition: 'transform 700ms ease-out',
-          }} />
+          <img
+            src={img}
+            alt={title}
+            loading="eager"
+            style={{
+              position: 'absolute', inset: 0,
+              width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center',
+            }}
+          />
         ) : (
           <div style={{
             position: 'absolute', inset: 0,

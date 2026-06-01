@@ -171,17 +171,28 @@ function ProjectCard({ title, loc, cat, desc, col, img, pos }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ gridColumn: col || 'span 6', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}
+      style={{ gridColumn: col || 'span 6', position: 'relative', overflow: 'hidden', cursor: 'pointer', aspectRatio: '4/3' }}
     >
-      <div style={{
-        backgroundImage: img ? `url('${img}')` : undefined,
-        background: img ? undefined : 'repeating-linear-gradient(135deg, #2C2420 0px, #2C2420 20px, #1C1916 20px, #1C1916 40px)',
-        backgroundSize: 'cover',
-        backgroundPosition: pos || 'center',
-        aspectRatio: '4/3', width: '100%',
-        transform: hovered ? 'scale(1.03)' : 'scale(1)',
-        transition: 'transform 600ms ease-out',
-      }} />
+      {img ? (
+        <img
+          src={img}
+          alt={title}
+          loading="eager"
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover',
+            objectPosition: pos || 'center',
+            transform: hovered ? 'scale(1.03)' : 'scale(1)',
+            transition: 'transform 600ms ease-out',
+          }}
+        />
+      ) : (
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'repeating-linear-gradient(135deg, #2C2420 0px, #2C2420 20px, #1C1916 20px, #1C1916 40px)',
+        }} />
+      )}
       <div style={{
         position: 'absolute', inset: 0,
         background: 'linear-gradient(to top, rgba(28,25,22,0.90) 0%, transparent 60%)',
