@@ -6,10 +6,10 @@ import TLMonogram from './TLMonogram';
 
 const LINKS = [
   { label: 'Accueil',      href: '/' },
-  { label: 'Réalisations', href: '/#realisations' },
-  { label: 'Services',     href: '/#services' },
+  { label: 'Réalisations', href: '/realisations' },
+  { label: 'Services',     href: '/services' },
   { label: 'À propos',     href: '/a-propos' },
-  { label: 'Contact',      href: '/#contact' },
+  { label: 'Contact',      href: '/contact' },
 ];
 
 export default function Navbar() {
