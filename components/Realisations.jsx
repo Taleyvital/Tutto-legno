@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const FILTERS = ['Tous', 'Portes', 'Mobilier', 'Cuisine'];
+const FILTERS = ['Tous', 'Portes', 'Mobilier', 'Cuisine', 'Dressing'];
 
 const PROJECTS = [
   // Portes
@@ -86,6 +86,81 @@ const PROJECTS = [
     cat: 'Cuisine',
     desc: 'Pose meubles hauts cuisine acajou massif teinte wengé',
     img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.53.jpeg',
+    pos: 'center center',
+  },
+  {
+    title: 'Cuisine bicolore bois & blanc',
+    loc: 'Abidjan, 2025',
+    cat: 'Cuisine',
+    desc: 'Cuisine complète bois naturel, meubles hauts laqués blancs',
+    img: '/realisation/IMG_1772.JPG',
+    pos: 'center center',
+  },
+  {
+    title: 'Cuisine laquée blanche',
+    loc: 'Abidjan, 2025',
+    cat: 'Cuisine',
+    desc: 'Cuisine en L laquée blanc mat, four encastré, hotte intégrée',
+    img: '/realisation/IMG_1778.JPG',
+    pos: 'center center',
+  },
+  // Portes — nouvelle vague
+  {
+    title: 'Porte pivotante laquée noire',
+    loc: 'Cocody, 2025',
+    cat: 'Portes',
+    desc: 'Grande porte d\'entrée pivotante laquée noir mat, poignée inox',
+    img: '/realisation/IMG_1784.JPG',
+    pos: 'center center',
+  },
+  // Mobilier — nouvelle vague
+  {
+    title: 'Table basse bois & verre fumé',
+    loc: 'Abidjan, 2025',
+    cat: 'Mobilier',
+    desc: 'Table basse bois massif avec plateau en verre fumé et tiroirs',
+    img: '/realisation/IMG_1726.JPG',
+    pos: 'center center',
+  },
+  {
+    title: 'Salle à manger 8 places wengé',
+    loc: 'Abidjan, 2025',
+    cat: 'Mobilier',
+    desc: 'Table carrée 8 places wengé laqué, chaises tissu gris acier',
+    img: '/realisation/IMG_1731.JPG',
+    pos: 'center top',
+  },
+  {
+    title: 'Table live edge acajou',
+    loc: 'Riviera, 2025',
+    cat: 'Mobilier',
+    desc: 'Table salle à manger plateau monoxyle bords naturels, pieds massifs',
+    img: '/realisation/IMG_1736.JPG',
+    pos: 'center center',
+  },
+  {
+    title: 'Fauteuil design acajou & crème',
+    loc: 'Abidjan, 2025',
+    cat: 'Mobilier',
+    desc: 'Fauteuil scandinave bois acajou, assise et dossier tissu crème',
+    img: '/realisation/IMG_1757.JPG',
+    pos: 'center center',
+  },
+  // Dressing
+  {
+    title: 'Dressing miroir portes coulissantes',
+    loc: 'Angré, 2025',
+    cat: 'Dressing',
+    desc: 'Dressing encastré 3 portes coulissantes, vantail central miroir pleine hauteur',
+    img: '/realisation/IMG_1832.JPG',
+    pos: 'center center',
+  },
+  {
+    title: 'Walk-in closet sur mesure',
+    loc: 'Plateau, 2025',
+    cat: 'Dressing',
+    desc: 'Dressing ouvert, penderie centrale, tiroirs et étagères modulables',
+    img: '/realisation/IMG_1838.JPG',
     pos: 'center center',
   },
 ];
