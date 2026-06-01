@@ -2,14 +2,92 @@
 
 import { useState } from 'react';
 
-const FILTERS = ['Tous', 'Portes', 'Mobilier', 'Escaliers', 'Parquet'];
+const FILTERS = ['Tous', 'Portes', 'Mobilier', 'Cuisine'];
 
 const PROJECTS = [
-  { title: 'Villa Les Palmiers',  loc: 'Cocody, 2024',    cat: 'Mobilier',  desc: 'Aménagement complet 340 m²',    img: '/chantier/livraison-showcase.jpeg',  pos: 'center center' },
-  { title: 'Résidence Bel Air',   loc: 'Angré, 2024',     cat: 'Portes',    desc: '12 portes chêne massif',        img: '/chantier/pose-porte.jpeg',          pos: 'center 30%' },
-  { title: 'Penthouse Plateau',   loc: 'Plateau, 2023',   cat: 'Escaliers', desc: 'Plafond bois massif acajou',    img: '/chantier/pose-plafond-2.jpeg',      pos: 'center top' },
-  { title: 'Villa Tropicale',     loc: 'Riviera 3, 2023', cat: 'Parquet',   desc: '280 m² parquet iroko',          img: '/chantier/pose-parquet.jpeg',        pos: 'center center' },
-  { title: "Manoir d'Attoban",    loc: 'Attoban, 2023',   cat: 'Mobilier',  desc: 'Pose parquet & finition',       img: '/chantier/poncage-parquet.jpeg',     pos: 'center center' },
+  // Portes
+  {
+    title: "Porte d'entrée wengé",
+    loc: 'Abidjan, 2024',
+    cat: 'Portes',
+    desc: 'Porte massif wengé avec vitrages latéraux',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.52.jpeg',
+    pos: 'center center',
+  },
+  {
+    title: 'Double porte soleil sculptée',
+    loc: 'Abidjan, 2025',
+    cat: 'Portes',
+    desc: 'Double vantaux bois massif sculpté motif soleil',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.55%20%288%29.jpeg',
+    pos: 'center top',
+  },
+  {
+    title: 'Porte pivotante acajou',
+    loc: 'Cocody, 2025',
+    cat: 'Portes',
+    desc: "Porte d'entrée pivotante acajou laqué & verre",
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.12.15.jpeg',
+    pos: 'center center',
+  },
+  {
+    title: 'Porte intérieure acajou',
+    loc: 'Angré, 2025',
+    cat: 'Portes',
+    desc: 'Porte intérieure acajou rouge, poignée inox carrée',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.55%20%282%29.jpeg',
+    pos: 'center center',
+  },
+  // Mobilier
+  {
+    title: 'Salle à manger laquée',
+    loc: 'Abidjan, 2025',
+    cat: 'Mobilier',
+    desc: 'Table & 6 chaises laquées noir mat sur mesure',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.10.29.jpeg',
+    pos: 'center center',
+  },
+  {
+    title: 'Table familiale bois massif',
+    loc: 'Abidjan, 2024',
+    cat: 'Mobilier',
+    desc: 'Table avec insert décoratif galets & chaises cuir blanc',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.10.29%20%282%29.jpeg',
+    pos: 'center center',
+  },
+  {
+    title: 'Salon complet sur mesure',
+    loc: 'Riviera, 2025',
+    cat: 'Mobilier',
+    desc: 'Meuble TV, étagères murales flottantes & table basse',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.55.jpeg',
+    pos: 'center center',
+  },
+  {
+    title: 'Chaise design bois brut',
+    loc: 'Atelier, 2025',
+    cat: 'Mobilier',
+    desc: 'Chaise ergonomique bois massif taillée sur mesure',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.55%20%283%29.jpeg',
+    pos: 'center top',
+  },
+  {
+    title: 'Table de terrasse lattes',
+    loc: 'Atelier, 2025',
+    cat: 'Mobilier',
+    desc: 'Table extérieure lattes bois massif & pieds en A',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.55%20%2811%29.jpeg',
+    pos: 'center top',
+  },
+  // Cuisine
+  {
+    title: 'Cuisine meubles hauts acajou',
+    loc: 'Abidjan, 2024',
+    cat: 'Cuisine',
+    desc: 'Pose meubles hauts cuisine acajou massif teinte wengé',
+    img: '/realisation/WhatsApp%20Image%202026-06-01%20at%2011.11.53.jpeg',
+    pos: 'center center',
+  },
 ];
 
 function ProjectCard({ title, loc, cat, desc, col, img, pos }) {
